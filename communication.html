@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ushuru Investment Co-operative - Communication</title>
+    <title>Bamburi Wananchi SACCO - Communication</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --maroon: #7A1F23;
-            --gold: #F5B800;
-            --brown-gray: #6C3F33;
+            --primary-green: #0A8F5A;
+            --light-green: #10b26c;
+            --accent-gold: #F5B800;
             --light-gray: #f5f5f5;
             --dark-gray: #333;
             --white: #ffffff;
@@ -30,10 +30,10 @@
             min-height: 100vh;
         }
 
-        /* Sidebar Styles - Same as previous pages */
+        /* Sidebar Styles */
         .sidebar {
             width: 250px;
-            background: linear-gradient(to bottom, var(--maroon), #5a1519);
+            background: linear-gradient(to bottom, var(--primary-green), #087349);
             color: var(--white);
             height: 100vh;
             position: fixed;
@@ -58,13 +58,14 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background-color: var(--gold);
+            background-color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--maroon);
+            color: var(--primary-green);
             font-weight: bold;
+            font-size: 18px;
         }
 
         .logo-text {
@@ -73,7 +74,7 @@
         }
 
         .logo-text span {
-            color: var(--gold);
+            color: var(--accent-gold);
         }
 
         .nav-links {
@@ -91,9 +92,9 @@
         }
 
         .nav-links li.active {
-            background-color: var(--gold);
-            color: var(--maroon);
-            border-left: 4px solid var(--gold);
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
+            border-left: 4px solid var(--accent-gold);
         }
 
         .nav-links a {
@@ -105,7 +106,7 @@
         }
 
         .nav-links li.active a {
-            color: var(--maroon);
+            color: var(--primary-green);
             font-weight: bold;
         }
 
@@ -132,8 +133,11 @@
         }
 
         .header h1 {
-            color: var(--maroon);
+            color: var(--primary-green);
             font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .user-info {
@@ -146,7 +150,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: var(--maroon);
+            background-color: var(--primary-green);
             color: var(--white);
             display: flex;
             align-items: center;
@@ -157,15 +161,15 @@
         .notification-icon {
             position: relative;
             font-size: 20px;
-            color: var(--maroon);
+            color: var(--primary-green);
         }
 
         .notification-badge {
             position: absolute;
             top: -5px;
             right: -5px;
-            background-color: var(--gold);
-            color: var(--maroon);
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
             border-radius: 50%;
             width: 18px;
             height: 18px;
@@ -173,6 +177,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: bold;
         }
 
         /* Communication Content Styles */
@@ -185,9 +190,10 @@
 
         .communication-card {
             background-color: var(--white);
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: var(--shadow);
             padding: 20px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
         }
 
         .card-header {
@@ -195,20 +201,25 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
         }
 
         .card-title {
             font-size: 18px;
-            color: var(--maroon);
+            color: var(--primary-green);
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .card-icon {
             width: 40px;
             height: 40px;
-            border-radius: 8px;
-            background-color: rgba(122, 31, 35, 0.1);
-            color: var(--maroon);
+            border-radius: 10px;
+            background-color: rgba(10, 143, 90, 0.1);
+            color: var(--primary-green);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -223,8 +234,14 @@
         .stat-item {
             text-align: center;
             padding: 15px;
-            border-radius: 6px;
-            background-color: #f9f9f9;
+            border-radius: 8px;
+            background-color: rgba(10, 143, 90, 0.02);
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            background-color: rgba(10, 143, 90, 0.05);
+            transform: translateY(-2px);
         }
 
         .stat-label {
@@ -234,40 +251,42 @@
         }
 
         .stat-value {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            color: var(--maroon);
+            color: var(--primary-green);
         }
 
         /* Quick Actions */
         .quick-actions {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
             margin-bottom: 30px;
         }
 
         .action-card {
             background-color: var(--white);
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: var(--shadow);
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
+            border: 1px solid rgba(10, 143, 90, 0.1);
         }
 
         .action-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(10, 143, 90, 0.15);
+            border-color: var(--primary-green);
         }
 
         .action-icon {
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background-color: rgba(122, 31, 35, 0.1);
-            color: var(--maroon);
+            background: linear-gradient(135deg, rgba(10, 143, 90, 0.1), rgba(16, 178, 108, 0.1));
+            color: var(--primary-green);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -277,29 +296,31 @@
 
         .action-title {
             font-weight: 600;
-            color: var(--maroon);
-            margin-bottom: 5px;
+            color: var(--primary-green);
+            margin-bottom: 8px;
             font-size: 16px;
         }
 
         .action-description {
-            font-size: 12px;
+            font-size: 13px;
             color: #666;
+            line-height: 1.4;
         }
 
         /* Tabs Navigation */
         .tabs-container {
             background-color: var(--white);
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: var(--shadow);
             margin-bottom: 30px;
             overflow: hidden;
+            border: 1px solid rgba(10, 143, 90, 0.1);
         }
 
         .tabs-header {
             display: flex;
-            border-bottom: 1px solid #eee;
-            background-color: #f9f9f9;
+            border-bottom: 1px solid rgba(10, 143, 90, 0.1);
+            background-color: rgba(10, 143, 90, 0.02);
         }
 
         .tab {
@@ -309,16 +330,20 @@
             color: #666;
             transition: all 0.3s;
             border-bottom: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .tab.active {
-            color: var(--maroon);
-            border-bottom: 3px solid var(--maroon);
+            color: var(--primary-green);
+            border-bottom: 3px solid var(--primary-green);
             background-color: white;
         }
 
         .tab:hover:not(.active) {
-            background-color: #f0f0f0;
+            background-color: rgba(10, 143, 90, 0.05);
+            color: var(--primary-green);
         }
 
         .tab-content {
@@ -340,12 +365,17 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
         }
 
         .section-title {
             font-size: 18px;
-            color: var(--maroon);
+            color: var(--primary-green);
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .messages-list {
@@ -356,26 +386,26 @@
         .message-item {
             display: flex;
             padding: 15px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(10, 143, 90, 0.1);
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .message-item:hover {
-            background-color: #f9f9f9;
+            background-color: rgba(10, 143, 90, 0.02);
         }
 
         .message-item.unread {
-            background-color: rgba(122, 31, 35, 0.05);
-            border-left: 3px solid var(--maroon);
+            background-color: rgba(10, 143, 90, 0.05);
+            border-left: 3px solid var(--primary-green);
         }
 
         .message-icon {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: rgba(122, 31, 35, 0.1);
-            color: var(--maroon);
+            background-color: rgba(10, 143, 90, 0.1);
+            color: var(--primary-green);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -391,7 +421,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
         .message-sender {
@@ -417,9 +447,12 @@
         }
 
         .message-attachment {
-            color: var(--maroon);
+            color: var(--primary-green);
             font-size: 12px;
             margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         /* Support Tickets */
@@ -432,10 +465,11 @@
         }
 
         .ticket-item {
-            border: 1px solid #eee;
-            border-radius: 6px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
+            border-radius: 8px;
             margin-bottom: 15px;
             overflow: hidden;
+            background-color: rgba(10, 143, 90, 0.02);
         }
 
         .ticket-header {
@@ -443,8 +477,13 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px;
-            background-color: #f9f9f9;
+            background-color: rgba(10, 143, 90, 0.02);
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .ticket-header:hover {
+            background-color: rgba(10, 143, 90, 0.05);
         }
 
         .ticket-info {
@@ -455,7 +494,7 @@
 
         .ticket-id {
             font-weight: 600;
-            color: var(--maroon);
+            color: var(--primary-green);
         }
 
         .ticket-subject {
@@ -463,30 +502,30 @@
         }
 
         .ticket-status {
-            padding: 4px 8px;
+            padding: 6px 12px;
             border-radius: 12px;
             font-size: 12px;
             font-weight: 500;
         }
 
         .status-open {
-            background-color: rgba(76, 175, 80, 0.1);
-            color: #4CAF50;
+            background-color: rgba(10, 143, 90, 0.1);
+            color: var(--primary-green);
         }
 
         .status-pending {
-            background-color: rgba(255, 152, 0, 0.1);
-            color: #FF9800;
+            background-color: rgba(245, 184, 0, 0.1);
+            color: var(--accent-gold);
         }
 
         .status-resolved {
-            background-color: rgba(33, 150, 243, 0.1);
-            color: #2196F3;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: #3498db;
         }
 
         .status-closed {
-            background-color: rgba(158, 158, 158, 0.1);
-            color: #9E9E9E;
+            background-color: rgba(149, 165, 166, 0.1);
+            color: #95a5a6;
         }
 
         .ticket-details {
@@ -507,7 +546,7 @@
             gap: 15px;
             margin-bottom: 15px;
             padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(10, 143, 90, 0.1);
         }
 
         .meta-item {
@@ -523,11 +562,13 @@
 
         .meta-value {
             font-weight: 500;
+            color: var(--primary-green);
         }
 
         .ticket-description {
             margin-bottom: 15px;
             line-height: 1.5;
+            color: #555;
         }
 
         .ticket-actions {
@@ -538,7 +579,7 @@
         .btn {
             padding: 8px 16px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
@@ -549,31 +590,34 @@
         }
 
         .btn-primary {
-            background-color: var(--maroon);
+            background-color: var(--primary-green);
             color: var(--white);
         }
 
         .btn-primary:hover {
-            background-color: #5a1519;
+            background-color: #087349;
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
-            background-color: var(--gold);
-            color: var(--maroon);
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
         }
 
         .btn-secondary:hover {
             background-color: #e0a800;
+            transform: translateY(-2px);
         }
 
         .btn-outline {
             background-color: transparent;
-            border: 1px solid var(--maroon);
-            color: var(--maroon);
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
         }
 
         .btn-outline:hover {
-            background-color: rgba(122, 31, 35, 0.1);
+            background-color: rgba(10, 143, 90, 0.1);
+            transform: translateY(-2px);
         }
 
         /* Feedback Form */
@@ -602,14 +646,15 @@
             width: 100%;
             padding: 10px 12px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 14px;
-            transition: border 0.3s;
+            transition: all 0.3s;
         }
 
         .form-input:focus, .form-select:focus, .form-textarea:focus {
-            border-color: var(--maroon);
+            border-color: var(--primary-green);
             outline: none;
+            box-shadow: 0 0 0 3px rgba(10, 143, 90, 0.1);
         }
 
         .form-textarea {
@@ -633,11 +678,17 @@
         }
 
         .announcement-item {
-            border-left: 4px solid var(--maroon);
+            border-left: 4px solid var(--primary-green);
             padding: 15px;
             margin-bottom: 15px;
-            background-color: #f9f9f9;
-            border-radius: 0 4px 4px 0;
+            background-color: rgba(10, 143, 90, 0.02);
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s;
+        }
+
+        .announcement-item:hover {
+            background-color: rgba(10, 143, 90, 0.05);
+            transform: translateX(5px);
         }
 
         .announcement-header {
@@ -649,7 +700,7 @@
 
         .announcement-title {
             font-weight: 600;
-            color: var(--maroon);
+            color: var(--primary-green);
             font-size: 16px;
         }
 
@@ -658,6 +709,9 @@
             color: #666;
             white-space: nowrap;
             margin-left: 15px;
+            background-color: rgba(10, 143, 90, 0.1);
+            padding: 3px 8px;
+            border-radius: 10px;
         }
 
         .announcement-content {
@@ -666,7 +720,7 @@
         }
 
         .announcement-important {
-            border-left-color: var(--gold);
+            border-left-color: var(--accent-gold);
             background-color: rgba(245, 184, 0, 0.05);
         }
 
@@ -690,7 +744,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(10, 143, 90, 0.1);
         }
 
         .setting-label {
@@ -741,7 +795,7 @@
         }
 
         input:checked + .toggle-slider {
-            background-color: var(--maroon);
+            background-color: var(--primary-green);
         }
 
         input:checked + .toggle-slider:before {
@@ -787,6 +841,12 @@
             .ticket-meta {
                 grid-template-columns: 1fr;
             }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -800,6 +860,7 @@
             
             .tab {
                 text-align: center;
+                justify-content: center;
             }
             
             .announcement-header {
@@ -818,8 +879,8 @@
     <div class="sidebar">
         <div class="logo-container">
             <div class="logo">
-                <div class="logo-icon">U</div>
-                <div class="logo-text">USHURU <span>INVESTMENT</span></div>
+                <div class="logo-icon">B</div>
+                <div class="logo-text">BAMBURI <span>SACCO</span></div>
             </div>
         </div>
         
@@ -837,21 +898,33 @@
                 </a>
             </li>
             <li>
-                <a href="contributions.html">
+                <a href="savings.html">
+                    <i class="fas fa-piggy-bank"></i>
+                    <span class="nav-text">Savings</span>
+                </a>
+            </li>
+            <li>
+                <a href="loans.html">
                     <i class="fas fa-hand-holding-usd"></i>
-                    <span class="nav-text">Contributions</span>
+                    <span class="nav-text">Loans</span>
                 </a>
             </li>
             <li>
-                <a href="investments.html">
+                <a href="shares.html">
                     <i class="fas fa-chart-line"></i>
-                    <span class="nav-text">Investments</span>
+                    <span class="nav-text">Shares</span>
                 </a>
             </li>
             <li>
-                <a href="refunds.html">
+                <a href="guarantorship.html">
+                    <i class="fas fa-user-friends"></i>
+                    <span class="nav-text">Guarantorship</span>
+                </a>
+            </li>
+            <li>
+                <a href="statements.html">
                     <i class="fas fa-file-invoice-dollar"></i>
-                    <span class="nav-text">Refunds</span>
+                    <span class="nav-text">Statements</span>
                 </a>
             </li>
             <li class="active">
@@ -878,14 +951,14 @@
     <!-- Main Content -->
     <div class="main-content">
         <div class="header">
-            <h1>Communication & Support</h1>
+            <h1><i class="fas fa-comments"></i> Communication & Support</h1>
             <div class="user-info">
                 <div class="notification-icon">
                     <i class="fas fa-bell"></i>
                     <span class="notification-badge">5</span>
                 </div>
                 <div class="user-avatar">JM</div>
-                <span>John Member</span>
+                <span>John Mwangi (Member #: BW001234)</span>
             </div>
         </div>
 
@@ -893,9 +966,9 @@
         <div class="communication-container">
             <div class="communication-card">
                 <div class="card-header">
-                    <div class="card-title">Messages & Notices</div>
+                    <div class="card-title"><i class="fas fa-envelope"></i> Messages & Notices</div>
                     <div class="card-icon">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-inbox"></i>
                     </div>
                 </div>
                 <div class="stats-grid">
@@ -912,7 +985,7 @@
                         <div class="stat-value">5</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-label">Dividend Advices</div>
+                        <div class="stat-label">Loan Notifications</div>
                         <div class="stat-value">2</div>
                     </div>
                 </div>
@@ -920,9 +993,9 @@
 
             <div class="communication-card">
                 <div class="card-header">
-                    <div class="card-title">Support Tickets</div>
+                    <div class="card-title"><i class="fas fa-ticket-alt"></i> Support Tickets</div>
                     <div class="card-icon">
-                        <i class="fas fa-ticket-alt"></i>
+                        <i class="fas fa-headset"></i>
                     </div>
                 </div>
                 <div class="stats-grid">
@@ -953,49 +1026,62 @@
                     <i class="fas fa-plus-circle"></i>
                 </div>
                 <div class="action-title">New Support Ticket</div>
-                <div class="action-description">Submit a new complaint or query</div>
+                <div class="action-description">Submit a new complaint or query to SACCO support</div>
             </div>
-            <div class="action-card">
+            <div class="action-card" onclick="openAnnouncements()">
                 <div class="action-icon">
                     <i class="fas fa-bullhorn"></i>
                 </div>
                 <div class="action-title">View Announcements</div>
-                <div class="action-description">Latest society updates</div>
+                <div class="action-description">Latest SACCO updates and notices</div>
             </div>
-            <div class="action-card">
+            <div class="action-card" onclick="openFeedback()">
                 <div class="action-icon">
                     <i class="fas fa-comment-medical"></i>
                 </div>
                 <div class="action-title">Give Feedback</div>
-                <div class="action-description">Share your suggestions</div>
+                <div class="action-description">Share your suggestions for improvement</div>
             </div>
-            <div class="action-card">
+            <div class="action-card" onclick="openSettings()">
                 <div class="action-icon">
                     <i class="fas fa-cog"></i>
                 </div>
                 <div class="action-title">Notification Settings</div>
-                <div class="action-description">Manage your preferences</div>
+                <div class="action-description">Manage your communication preferences</div>
             </div>
         </div>
 
         <!-- Tabs Navigation -->
         <div class="tabs-container">
             <div class="tabs-header">
-                <div class="tab active" data-tab="messages">Secure Inbox</div>
-                <div class="tab" data-tab="tickets">Support Tickets</div>
-                <div class="tab" data-tab="feedback">Feedback & Complaints</div>
-                <div class="tab" data-tab="announcements">Announcements</div>
-                <div class="tab" data-tab="settings">Notification Settings</div>
+                <div class="tab active" data-tab="messages">
+                    <i class="fas fa-inbox"></i> Secure Inbox
+                </div>
+                <div class="tab" data-tab="tickets">
+                    <i class="fas fa-ticket-alt"></i> Support Tickets
+                </div>
+                <div class="tab" data-tab="feedback">
+                    <i class="fas fa-comment-dots"></i> Feedback & Complaints
+                </div>
+                <div class="tab" data-tab="announcements">
+                    <i class="fas fa-bullhorn"></i> Announcements
+                </div>
+                <div class="tab" data-tab="settings">
+                    <i class="fas fa-sliders-h"></i> Notification Settings
+                </div>
             </div>
 
             <!-- Messages Tab -->
             <div class="tab-content active" id="messages">
                 <div class="messages-section">
                     <div class="section-header">
-                        <h3 class="section-title">Secure Inbox</h3>
+                        <h3 class="section-title"><i class="fas fa-inbox"></i> Secure Inbox</h3>
                         <div>
                             <button class="btn btn-primary">
                                 <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                            <button class="btn btn-outline" style="margin-left: 10px;">
+                                <i class="fas fa-archive"></i> Archive All
                             </button>
                         </div>
                     </div>
@@ -1003,16 +1089,16 @@
                     <div class="messages-list">
                         <div class="message-item unread">
                             <div class="message-icon">
-                                <i class="fas fa-money-bill-wave"></i>
+                                <i class="fas fa-percentage"></i>
                             </div>
                             <div class="message-content">
                                 <div class="message-header">
-                                    <div class="message-sender">Dividend Department</div>
+                                    <div class="message-sender">Bamburi SACCO - Dividends</div>
                                     <div class="message-time">Today, 09:30 AM</div>
                                 </div>
-                                <div class="message-subject">2023 Q3 Dividend Advice</div>
+                                <div class="message-subject">2023 Q3 Dividend Payment Notice</div>
                                 <div class="message-preview">
-                                    Your dividend for the third quarter of 2023 has been processed. Total amount: KSh 12,450...
+                                    Your dividend for the third quarter of 2023 has been processed. Total amount: KES 12,450...
                                 </div>
                                 <div class="message-attachment">
                                     <i class="fas fa-paperclip"></i> dividend_advice_q3_2023.pdf
@@ -1022,14 +1108,14 @@
                         
                         <div class="message-item unread">
                             <div class="message-icon">
-                                <i class="fas fa-bullhorn"></i>
+                                <i class="fas fa-users"></i>
                             </div>
                             <div class="message-content">
                                 <div class="message-header">
-                                    <div class="message-sender">Management Board</div>
+                                    <div class="message-sender">Bamburi SACCO Management</div>
                                     <div class="message-time">Yesterday, 14:15 PM</div>
                                 </div>
-                                <div class="message-subject">Annual General Meeting Notice</div>
+                                <div class="message-subject">Annual General Meeting (AGM) Notice 2023</div>
                                 <div class="message-preview">
                                     Notice is hereby given that the 2023 Annual General Meeting will be held on 15th December 2023...
                                 </div>
@@ -1041,16 +1127,16 @@
                         
                         <div class="message-item">
                             <div class="message-icon">
-                                <i class="fas fa-chart-line"></i>
+                                <i class="fas fa-bell"></i>
                             </div>
                             <div class="message-content">
                                 <div class="message-header">
-                                    <div class="message-sender">Investment Committee</div>
+                                    <div class="message-sender">Bamburi SACCO Loans Dept</div>
                                     <div class="message-time">15 Sep 2023</div>
                                 </div>
-                                <div class="message-subject">New Investment Opportunity - Commercial Plots</div>
+                                <div class="message-subject">Loan Application Status Update</div>
                                 <div class="message-preview">
-                                    We are pleased to announce new commercial plot investments available in Westlands...
+                                    Your loan application BW-LN-2023-1011 has been received and is under review...
                                 </div>
                             </div>
                         </div>
@@ -1064,7 +1150,7 @@
                                     <div class="message-sender">System Administrator</div>
                                     <div class="message-time">10 Sep 2023</div>
                                 </div>
-                                <div class="message-subject">System Maintenance Notice</div>
+                                <div class="message-subject">Portal Maintenance Notice</div>
                                 <div class="message-preview">
                                     Please be advised that the member portal will undergo maintenance on Saturday, 16th September...
                                 </div>
@@ -1078,7 +1164,7 @@
             <div class="tab-content" id="tickets">
                 <div class="tickets-section">
                     <div class="section-header">
-                        <h3 class="section-title">Support Ticket System</h3>
+                        <h3 class="section-title"><i class="fas fa-ticket-alt"></i> Support Ticket System</h3>
                         <div>
                             <button class="btn btn-primary" onclick="openNewTicket()">
                                 <i class="fas fa-plus"></i> New Ticket
@@ -1090,8 +1176,8 @@
                         <div class="ticket-item active">
                             <div class="ticket-header">
                                 <div class="ticket-info">
-                                    <div class="ticket-id">TKT-2023-0789</div>
-                                    <div class="ticket-subject">Issue with contribution statement download</div>
+                                    <div class="ticket-id">TKT-BW-2023-0789</div>
+                                    <div class="ticket-subject">Issue with statement download</div>
                                 </div>
                                 <div class="ticket-status status-pending">Pending Response</div>
                             </div>
@@ -1115,7 +1201,7 @@
                                     </div>
                                 </div>
                                 <div class="ticket-description">
-                                    <p>I'm unable to download my contribution statement for Q2 2023. When I click the download button, I get an error message saying "Document generation failed". I've tried multiple times over the past two days with the same result.</p>
+                                    <p>I'm unable to download my savings statement for Q2 2023. When I click the download button, I get an error message saying "Document generation failed". I've tried multiple times over the past two days with the same result.</p>
                                 </div>
                                 <div class="ticket-actions">
                                     <button class="btn btn-outline">
@@ -1131,8 +1217,8 @@
                         <div class="ticket-item">
                             <div class="ticket-header">
                                 <div class="ticket-info">
-                                    <div class="ticket-id">TKT-2023-0654</div>
-                                    <div class="ticket-subject">Clarification on plot ownership transfer process</div>
+                                    <div class="ticket-id">TKT-BW-2023-0654</div>
+                                    <div class="ticket-subject">Clarification on share certificate</div>
                                 </div>
                                 <div class="ticket-status status-open">In Progress</div>
                             </div>
@@ -1148,7 +1234,7 @@
             <div class="tab-content" id="feedback">
                 <div class="feedback-section">
                     <div class="section-header">
-                        <h3 class="section-title">Feedback & Complaint Form</h3>
+                        <h3 class="section-title"><i class="fas fa-comment-dots"></i> Feedback & Complaint Form</h3>
                     </div>
                     
                     <form id="feedbackForm">
@@ -1206,7 +1292,7 @@
             <div class="tab-content" id="announcements">
                 <div class="announcements-section">
                     <div class="section-header">
-                        <h3 class="section-title">Society Announcements</h3>
+                        <h3 class="section-title"><i class="fas fa-bullhorn"></i> SACCO Announcements</h3>
                         <div>
                             <button class="btn btn-outline">
                                 <i class="fas fa-download"></i> Export All
@@ -1217,27 +1303,27 @@
                     <div class="announcements-list">
                         <div class="announcement-item announcement-important">
                             <div class="announcement-header">
-                                <div class="announcement-title">2023 Annual General Meeting</div>
+                                <div class="announcement-title">2023 Annual General Meeting (AGM)</div>
                                 <div class="announcement-date">15 Sep 2023</div>
                             </div>
                             <div class="announcement-content">
-                                Notice is hereby given that the 2023 Annual General Meeting of Ushuru Investment Co-operative Society Ltd will be held on Saturday, 16th December 2023 at the Society Headquarters starting at 9:00 AM. All members are encouraged to attend.
+                                Notice is hereby given that the 2023 Annual General Meeting of Bamburi Wananchi SACCO Society Ltd will be held on Saturday, 16th December 2023 at the SACCO Headquarters starting at 9:00 AM. All members are encouraged to attend and participate in decision making.
                             </div>
                         </div>
                         
                         <div class="announcement-item">
                             <div class="announcement-header">
-                                <div class="announcement-title">New Land Investment Opportunity</div>
+                                <div class="announcement-title">New Loan Product Launch - Education Loan</div>
                                 <div class="announcement-date">10 Sep 2023</div>
                             </div>
                             <div class="announcement-content">
-                                We are pleased to announce the acquisition of 50 prime residential plots in Karen. Members can now apply for allocation. Visit the investments section for more details and application forms.
+                                We are pleased to announce the launch of our new Education Loan product with favorable terms for school fees financing. Members can now apply for up to KES 500,000 at 8% interest per annum.
                             </div>
                         </div>
                         
                         <div class="announcement-item">
                             <div class="announcement-header">
-                                <div class="announcement-title">Quarterly Dividend Payment</div>
+                                <div class="announcement-title">Quarterly Dividend Payment - Q3 2023</div>
                                 <div class="announcement-date">05 Sep 2023</div>
                             </div>
                             <div class="announcement-content">
@@ -1252,12 +1338,14 @@
             <div class="tab-content" id="settings">
                 <div class="settings-section">
                     <div class="section-header">
-                        <h3 class="section-title">Notification Preferences</h3>
+                        <h3 class="section-title"><i class="fas fa-sliders-h"></i> Notification Preferences</h3>
                     </div>
                     
                     <div class="settings-grid">
                         <div class="setting-group">
-                            <h4 style="margin-bottom: 15px; color: var(--maroon);">Email Notifications</h4>
+                            <h4 style="margin-bottom: 15px; color: var(--primary-green); display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-envelope"></i> Email Notifications
+                            </h4>
                             <div class="setting-item">
                                 <div>
                                     <div class="setting-label">Account Statements</div>
@@ -1280,8 +1368,8 @@
                             </div>
                             <div class="setting-item">
                                 <div>
-                                    <div class="setting-label">Investment Opportunities</div>
-                                    <div class="setting-description">New investment announcements</div>
+                                    <div class="setting-label">Loan Application Updates</div>
+                                    <div class="setting-description">Loan status notifications</div>
                                 </div>
                                 <label class="toggle-switch">
                                     <input type="checkbox" checked>
@@ -1291,11 +1379,13 @@
                         </div>
                         
                         <div class="setting-group">
-                            <h4 style="margin-bottom: 15px; color: var(--maroon);">SMS Notifications</h4>
+                            <h4 style="margin-bottom: 15px; color: var(--primary-green); display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-sms"></i> SMS Notifications
+                            </h4>
                             <div class="setting-item">
                                 <div>
                                     <div class="setting-label">Payment Reminders</div>
-                                    <div class="setting-description">Upcoming payment due dates</div>
+                                    <div class="setting-description">Upcoming loan payment due dates</div>
                                 </div>
                                 <label class="toggle-switch">
                                     <input type="checkbox" checked>
@@ -1304,8 +1394,8 @@
                             </div>
                             <div class="setting-item">
                                 <div>
-                                    <div class="setting-label">Important Alerts</div>
-                                    <div class="setting-description">Critical account notifications</div>
+                                    <div class="setting-label">Security Alerts</div>
+                                    <div class="setting-description">Critical account security notifications</div>
                                 </div>
                                 <label class="toggle-switch">
                                     <input type="checkbox" checked>
@@ -1342,9 +1432,7 @@
             
             navItems.forEach(item => {
                 item.addEventListener('click', function() {
-                    // Remove active class from all items
                     navItems.forEach(i => i.classList.remove('active'));
-                    // Add active class to clicked item
                     this.classList.add('active');
                 });
             });
@@ -1372,8 +1460,11 @@
             ticketItems.forEach(item => {
                 const header = item.querySelector('.ticket-header');
                 header.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
                     ticketItems.forEach(i => i.classList.remove('active'));
-                    item.classList.add('active');
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
                 });
             });
 
@@ -1384,25 +1475,38 @@
                 this.reset();
             });
 
-            // Quick action cards functionality
-            const actionCards = document.querySelectorAll('.action-card');
-            actionCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const title = this.querySelector('.action-title').textContent;
-                    if (title !== 'New Support Ticket') {
-                        alert(`Action: ${title} - This would open the respective functionality`);
-                    }
-                });
+            // Save notification preferences
+            document.querySelector('.settings-section .btn-primary').addEventListener('click', function() {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Notification preferences saved successfully!');
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                }, 1000);
             });
         });
 
         function openNewTicket() {
             // Switch to tickets tab and open new ticket form
             document.querySelector('[data-tab="tickets"]').click();
-            // In a real application, this would open a new ticket form
             setTimeout(() => {
                 alert('New support ticket form would open here');
             }, 300);
+        }
+
+        function openAnnouncements() {
+            document.querySelector('[data-tab="announcements"]').click();
+        }
+
+        function openFeedback() {
+            document.querySelector('[data-tab="feedback"]').click();
+        }
+
+        function openSettings() {
+            document.querySelector('[data-tab="settings"]').click();
         }
     </script>
 </body>

@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ushuru Investment Co-operative - Members Portal</title>
+    <title>Bamburi Wananchi SACCO - Members Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --maroon: #7A1F23;
-            --gold: #F5B800;
-            --brown-gray: #6C3F33;
+            --primary-green: #0A8F5A;
+            --light-green: #10b26c;
+            --accent-gold: #F5B800;
             --light-gray: #f5f5f5;
             --dark-gray: #333;
             --white: #ffffff;
@@ -33,7 +33,7 @@
         /* Sidebar Styles */
         .sidebar {
             width: 250px;
-            background: linear-gradient(to bottom, var(--maroon), #5a1519);
+            background: linear-gradient(to bottom, var(--primary-green), #087349);
             color: var(--white);
             height: 100vh;
             position: fixed;
@@ -58,13 +58,14 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background-color: var(--gold);
+            background-color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--maroon);
+            color: var(--primary-green);
             font-weight: bold;
+            font-size: 18px;
         }
 
         .logo-text {
@@ -73,7 +74,7 @@
         }
 
         .logo-text span {
-            color: var(--gold);
+            color: var(--accent-gold);
         }
 
         .nav-links {
@@ -91,9 +92,9 @@
         }
 
         .nav-links li.active {
-            background-color: var(--gold);
-            color: var(--maroon);
-            border-left: 4px solid var(--gold);
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
+            border-left: 4px solid var(--accent-gold);
         }
 
         .nav-links a {
@@ -105,7 +106,7 @@
         }
 
         .nav-links li.active a {
-            color: var(--maroon);
+            color: var(--primary-green);
             font-weight: bold;
         }
 
@@ -132,7 +133,7 @@
         }
 
         .header h1 {
-            color: var(--maroon);
+            color: var(--primary-green);
             font-size: 24px;
         }
 
@@ -146,7 +147,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: var(--maroon);
+            background-color: var(--primary-green);
             color: var(--white);
             display: flex;
             align-items: center;
@@ -157,15 +158,15 @@
         .notification-icon {
             position: relative;
             font-size: 20px;
-            color: var(--maroon);
+            color: var(--primary-green);
         }
 
         .notification-badge {
             position: absolute;
             top: -5px;
             right: -5px;
-            background-color: var(--gold);
-            color: var(--maroon);
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
             border-radius: 50%;
             width: 18px;
             height: 18px;
@@ -173,6 +174,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: bold;
         }
 
         /* Dashboard Cards */
@@ -185,14 +187,16 @@
 
         .card {
             background-color: var(--white);
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: var(--shadow);
             padding: 20px;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(10, 143, 90, 0.1);
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(10, 143, 90, 0.15);
         }
 
         .card-header {
@@ -204,7 +208,7 @@
 
         .card-title {
             font-size: 18px;
-            color: var(--maroon);
+            color: var(--primary-green);
             font-weight: 600;
         }
 
@@ -212,8 +216,8 @@
             width: 40px;
             height: 40px;
             border-radius: 8px;
-            background-color: rgba(122, 31, 35, 0.1);
-            color: var(--maroon);
+            background-color: rgba(10, 143, 90, 0.1);
+            color: var(--primary-green);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -241,26 +245,38 @@
 
         .chart-card, .summary-card {
             background-color: var(--white);
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: var(--shadow);
             padding: 20px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
         }
 
         .chart-title, .summary-title {
             font-size: 18px;
-            color: var(--maroon);
+            color: var(--primary-green);
             margin-bottom: 15px;
             font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
         }
 
         .chart-placeholder {
             height: 300px;
             background-color: #f9f9f9;
-            border-radius: 4px;
+            border-radius: 8px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             color: #999;
+            border: 1px dashed #ddd;
+        }
+
+        .chart-placeholder i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: var(--primary-green);
+            opacity: 0.7;
         }
 
         .summary-list {
@@ -269,9 +285,17 @@
 
         .summary-list li {
             padding: 12px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(10, 143, 90, 0.1);
             display: flex;
             justify-content: space-between;
+            transition: background-color 0.2s;
+        }
+
+        .summary-list li:hover {
+            background-color: rgba(10, 143, 90, 0.05);
+            border-radius: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
         }
 
         .summary-list li:last-child {
@@ -284,22 +308,25 @@
 
         .summary-value {
             font-weight: 600;
-            color: var(--maroon);
+            color: var(--primary-green);
         }
 
         /* Recent Activity */
         .activity-card {
             background-color: var(--white);
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: var(--shadow);
             padding: 20px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
         }
 
         .activity-title {
             font-size: 18px;
-            color: var(--maroon);
+            color: var(--primary-green);
             margin-bottom: 15px;
             font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
         }
 
         .activity-list {
@@ -308,9 +335,10 @@
 
         .activity-list li {
             padding: 12px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(10, 143, 90, 0.1);
             display: flex;
             gap: 15px;
+            align-items: center;
         }
 
         .activity-list li:last-child {
@@ -322,10 +350,11 @@
             height: 40px;
             border-radius: 50%;
             background-color: rgba(245, 184, 0, 0.1);
-            color: var(--gold);
+            color: var(--accent-gold);
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .activity-details {
@@ -342,181 +371,35 @@
             color: #999;
         }
 
-        /* Login Page Styles */
-        .login-container {
+        .activity-amount {
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+
+        /* Quick Action Buttons */
+        .quick-actions {
             display: flex;
-            min-height: 100vh;
-        }
-
-        .login-left {
-            flex: 1;
-            background: linear-gradient(to bottom right, var(--maroon), #5a1519);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--white);
-            padding: 40px;
-        }
-
-        .login-logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .login-logo-icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--maroon);
-            font-weight: bold;
-            font-size: 24px;
-        }
-
-        .login-logo-text {
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .login-logo-text span {
-            color: var(--gold);
-        }
-
-        .login-tagline {
-            font-size: 18px;
-            margin-bottom: 40px;
-            text-align: center;
-            max-width: 500px;
-        }
-
-        .login-features {
-            max-width: 500px;
-        }
-
-        .login-feature {
-            display: flex;
-            align-items: center;
             gap: 15px;
             margin-bottom: 20px;
         }
 
-        .login-feature i {
-            color: var(--gold);
-            font-size: 20px;
-        }
-
-        .login-right {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px;
-        }
-
-        .login-form {
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .form-title {
-            font-size: 28px;
-            color: var(--maroon);
-            margin-bottom: 10px;
-        }
-
-        .form-subtitle {
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: border 0.3s;
-        }
-
-        .form-input:focus {
-            border-color: var(--maroon);
-            outline: none;
-        }
-
-        .form-options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .remember-me {
+        .action-btn {
+            padding: 12px 20px;
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-
-        .forgot-password {
-            color: var(--maroon);
-            text-decoration: none;
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
             transition: all 0.3s;
         }
 
-        .btn-primary {
-            background-color: var(--maroon);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background-color: #5a1519;
-        }
-
-        .btn-secondary {
-            background-color: var(--gold);
-            color: var(--maroon);
-        }
-
-        .btn-secondary:hover {
-            background-color: #e0a800;
-        }
-
-        .form-footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #666;
-        }
-
-        .form-footer a {
-            color: var(--maroon);
-            text-decoration: none;
-            font-weight: 500;
+        .action-btn:hover {
+            background-color: #087349;
+            transform: translateY(-2px);
         }
 
         /* Responsive Design */
@@ -539,16 +422,23 @@
         }
 
         @media (max-width: 768px) {
-            .login-container {
-                flex-direction: column;
-            }
-            
-            .login-left {
-                padding: 30px 20px;
-            }
-            
             .dashboard-cards {
                 grid-template-columns: 1fr;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .quick-actions {
+                flex-wrap: wrap;
+            }
+            
+            .action-btn {
+                flex: 1;
+                min-width: 150px;
             }
         }
     </style>
@@ -558,8 +448,8 @@
     <div class="sidebar">
         <div class="logo-container">
             <div class="logo">
-                <div class="logo-icon">U</div>
-                <div class="logo-text">USHURU <span>INVESTMENT</span></div>
+                <div class="logo-icon">B</div>
+                <div class="logo-text">BAMBURI <span>SACCO</span></div>
             </div>
         </div>
         
@@ -577,33 +467,45 @@
                 </a>
             </li>
             <li>
-                <a href="contributions.html">
+                <a href="savings.html">
+                    <i class="fas fa-piggy-bank"></i>
+                    <span class="nav-text">Savings</span>
+                </a>
+            </li>
+            <li>
+                <a href="loans.html">
                     <i class="fas fa-hand-holding-usd"></i>
-                    <span class="nav-text">Contributions</span>
+                    <span class="nav-text">Loans</span>
                 </a>
             </li>
             <li>
-                <a href="investments.html">
+                <a href="shares.html">
                     <i class="fas fa-chart-line"></i>
-                    <span class="nav-text">Investments</span>
+                    <span class="nav-text">Shares</span>
                 </a>
             </li>
             <li>
-                <a href="refunds.html">
+                <a href="guarantorship.html">
+                    <i class="fas fa-user-friends"></i>
+                    <span class="nav-text">Guarantorship</span>
+                </a>
+            </li>
+            <li>
+                <a href="statements.html">
                     <i class="fas fa-file-invoice-dollar"></i>
-                    <span class="nav-text">Refunds</span>
+                    <span class="nav-text">Statements</span>
                 </a>
             </li>
             <li>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </li>
+            <li class="active">
                 <a href="communication.html">
                     <i class="fas fa-comments"></i>
                     <span class="nav-text">Communication</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-cog"></i>
-                    <span class="nav-text">Settings</span>
                 </a>
             </li>
             <li>
@@ -625,53 +527,69 @@
                     <span class="notification-badge">3</span>
                 </div>
                 <div class="user-avatar">JM</div>
-                <span>John Member</span>
+                <span>John Mwangi (Member #: BW001234)</span>
             </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <button class="action-btn">
+                <i class="fas fa-file-signature"></i> Apply for Loan
+            </button>
+            <button class="action-btn">
+                <i class="fas fa-file-pdf"></i> Download Statement
+            </button>
+            <button class="action-btn">
+                <i class="fas fa-user-edit"></i> Update Profile
+            </button>
+            <button class="action-btn">
+                <i class="fas fa-user-plus"></i> Refer a Member
+            </button>
         </div>
 
         <!-- Dashboard Cards -->
         <div class="dashboard-cards">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Total Contributions</div>
+                    <div class="card-title">Savings Balance</div>
                     <div class="card-icon">
                         <i class="fas fa-wallet"></i>
                     </div>
                 </div>
-                <div class="card-value">KSh 245,680</div>
-                <div class="card-footer">Last updated: Today</div>
+                <div class="card-value">KES 245,780</div>
+                <div class="card-footer">Available for withdrawal</div>
             </div>
             
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Active Investments</div>
+                    <div class="card-title">Share Capital</div>
                     <div class="card-icon">
                         <i class="fas fa-chart-pie"></i>
                     </div>
                 </div>
-                <div class="card-value">3</div>
-                <div class="card-footer">2 plots, 1 unit trust</div>
+                <div class="card-value">KES 150,000</div>
+                <div class="card-footer">120 shares @ KES 1,250</div>
             </div>
             
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Next Payment Due</div>
+                    <div class="card-title">Active Loans</div>
                     <div class="card-icon">
-                        <i class="fas fa-calendar-alt"></i>
+                        <i class="fas fa-hand-holding-usd"></i>
                     </div>
                 </div>
-                <div class="card-value">KSh 15,000</div>
-                <div class="card-footer">Due: 15th Oct 2023</div>
+                <div class="card-value">KES 500,000</div>
+                <div class="card-footer">Due: 15th Jan 2024</div>
             </div>
         </div>
 
         <!-- Charts and Summary -->
         <div class="charts-container">
             <div class="chart-card">
-                <div class="chart-title">Contribution History</div>
+                <div class="chart-title">Transaction History</div>
                 <div class="chart-placeholder">
-                    <i class="fas fa-chart-bar" style="font-size: 48px; margin-right: 10px;"></i>
-                    Contribution Chart Visualization
+                    <i class="fas fa-chart-bar"></i>
+                    Transaction Chart Visualization
                 </div>
             </div>
             
@@ -679,17 +597,20 @@
                 <div class="summary-title">Account Summary</div>
                 <ul class="summary-list">
                     <li>
-                        <span class="summary-label">Shares Balance</span>
-                        <span class="summary-value">KSh 120,000</span>
+                        <span class="summary-label">Total Deposits</span>
+                        <span class="summary-value">KES 85,000</span>
                     </li>
                     <li>
-                        <span class="summary-label">Deposits</span>
-                        <span class="summary-value">KSh 85,000</span>
+                        <span class="summary-label">Guarantor Exposure</span>
+                        <span class="summary-value">KES 200,000</span>
                     </li>
-
                     <li>
-                        <span class="summary-label">Dividends YTD</span>
-                        <span class="summary-value">KSh 12,450</span>
+                        <span class="summary-label">Dividends Earned</span>
+                        <span class="summary-value">KES 12,450</span>
+                    </li>
+                    <li>
+                        <span class="summary-label">Last Login</span>
+                        <span class="summary-value">Today, 10:30 AM</span>
                     </li>
                 </ul>
             </div>
@@ -697,47 +618,47 @@
 
         <!-- Recent Activity -->
         <div class="activity-card">
-            <div class="activity-title">Recent Activity</div>
+            <div class="activity-title">Recent Transactions</div>
             <ul class="activity-list">
                 <li>
                     <div class="activity-icon">
-                        <i class="fas fa-money-bill-wave"></i>
+                        <i class="fas fa-arrow-down"></i>
                     </div>
                     <div class="activity-details">
-                        <div class="activity-description">Monthly contribution payment</div>
-                        <div class="activity-time">Today, 10:30 AM</div>
+                        <div class="activity-description">Deposit - Savings Account</div>
+                        <div class="activity-time">Today, 09:45 AM</div>
                     </div>
-                    <div class="activity-amount">KSh 10,000</div>
+                    <div class="activity-amount">+ KES 15,000</div>
+                </li>
+                <li>
+                    <div class="activity-icon">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="activity-details">
+                        <div class="activity-description">Withdrawal - M-Pesa</div>
+                        <div class="activity-time">Yesterday, 02:30 PM</div>
+                    </div>
+                    <div class="activity-amount">- KES 5,000</div>
+                </li>
+                <li>
+                    <div class="activity-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="activity-details">
+                        <div class="activity-description">Loan Disbursement</div>
+                        <div class="activity-time">Oct 10, 2023</div>
+                    </div>
+                    <div class="activity-amount">+ KES 200,000</div>
                 </li>
                 <li>
                     <div class="activity-icon">
                         <i class="fas fa-file-contract"></i>
                     </div>
                     <div class="activity-details">
-                        <div class="activity-description">Investment application submitted</div>
-                        <div class="activity-time">Yesterday, 2:15 PM</div>
-                    </div>
-                    <div class="activity-amount">Plot #245</div>
-                </li>
-                <li>
-                    <div class="activity-icon">
-                        <i class="fas fa-comment-dots"></i>
-                    </div>
-                    <div class="activity-details">
-                        <div class="activity-description">New message from admin</div>
+                        <div class="activity-description">Guarantor Request Received</div>
                         <div class="activity-time">Oct 5, 2023</div>
                     </div>
-                    <div class="activity-amount"></div>
-                </li>
-                <li>
-                    <div class="activity-icon">
-                        <i class="fas fa-download"></i>
-                    </div>
-                    <div class="activity-details">
-                        <div class="activity-description">Statement downloaded</div>
-                        <div class="activity-time">Oct 1, 2023</div>
-                    </div>
-                    <div class="activity-amount">Q3 2023</div>
+                    <div class="activity-amount">KES 100,000</div>
                 </li>
             </ul>
         </div>

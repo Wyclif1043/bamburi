@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bamburi Wananchi SACCO - Guarantorship</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #0A8F5A;
+            --light-green: #10b26c;
+            --accent-gold: #F5B800;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(to bottom, var(--primary-green), #087349);
+            color: var(--white);
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .logo-text span {
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            padding: 20px 0;
+        }
+
+        .nav-links li {
+            list-style: none;
+            padding: 12px 20px;
+            transition: all 0.3s;
+        }
+
+        .nav-links li:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links li.active {
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-links li.active a {
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .nav-links i {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header h1 {
+            color: var(--primary-green);
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-green);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .notification-icon {
+            position: relative;
+            font-size: 20px;
+            color: var(--primary-green);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Guarantorship Overview Cards */
+        .overview-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .overview-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 25px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
+            transition: all 0.3s;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(10, 143, 90, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .card-title {
+            font-size: 18px;
+            color: var(--primary-green);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(10, 143, 90, 0.1), rgba(16, 178, 108, 0.1));
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .card-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .card-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .action-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: var(--white);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(10, 143, 90, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: linear-gradient(135deg, var(--accent-gold), #e0a800);
+        }
+
+        .action-btn.outline {
+            background: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+        }
+
+        .action-btn.outline:hover {
+            background-color: rgba(10, 143, 90, 0.1);
+        }
+
+        /* Guarantorship Sections */
+        .guarantorship-section {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: var(--primary-green);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: white;
+            color: #555;
+        }
+
+        /* Requests Grid */
+        .requests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .request-card {
+            border: 1px solid rgba(10, 143, 90, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s;
+            background-color: rgba(10, 143, 90, 0.02);
+        }
+
+        .request-card:hover {
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 12px rgba(10, 143, 90, 0.1);
+        }
+
+        .request-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .request-info {
+            flex: 1;
+        }
+
+        .member-name {
+            font-weight: 600;
+            color: var(--primary-green);
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .member-id {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .request-status {
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-pending {
+            background-color: rgba(245, 184, 0, 0.1);
+            color: var(--accent-gold);
+        }
+
+        .status-approved {
+            background-color: rgba(10, 143, 90, 0.1);
+            color: var(--primary-green);
+        }
+
+        .status-rejected {
+            background-color: rgba(244, 67, 54, 0.1);
+            color: #F44336;
+        }
+
+        .status-expired {
+            background-color: rgba(149, 165, 166, 0.1);
+            color: #95a5a6;
+        }
+
+        .request-details {
+            margin-bottom: 20px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .detail-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+
+        .request-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .request-btn {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .request-btn.approve {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .request-btn.approve:hover {
+            background-color: #087349;
+        }
+
+        .request-btn.reject {
+            background-color: transparent;
+            border: 2px solid #f44336;
+            color: #f44336;
+        }
+
+        .request-btn.reject:hover {
+            background-color: rgba(244, 67, 54, 0.1);
+        }
+
+        .request-btn.view {
+            background-color: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+        }
+
+        .request-btn.view:hover {
+            background-color: rgba(10, 143, 90, 0.1);
+        }
+
+        /* My Guarantees Table */
+        .guarantees-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .guarantees-table th {
+            text-align: left;
+            padding: 12px 15px;
+            background-color: rgba(10, 143, 90, 0.05);
+            color: var(--primary-green);
+            font-weight: 600;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .guarantees-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .guarantees-table tr:hover {
+            background-color: rgba(10, 143, 90, 0.02);
+        }
+
+        .guarantee-status {
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .guarantee-action-btn {
+            padding: 6px 12px;
+            border: 1px solid var(--primary-green);
+            background-color: transparent;
+            color: var(--primary-green);
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .guarantee-action-btn:hover {
+            background-color: rgba(10, 143, 90, 0.1);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .close-btn:hover {
+            color: var(--primary-green);
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-btn.primary {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .modal-btn.primary:hover {
+            background-color: #087349;
+        }
+
+        .modal-btn.secondary {
+            background-color: #f5f5f5;
+            color: #666;
+        }
+
+        .modal-btn.secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            color: #ddd;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .logo-text, .sidebar .nav-text {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 70px;
+            }
+            
+            .overview-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .requests-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .request-actions {
+                flex-direction: column;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .guarantees-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo-container">
+            <div class="logo">
+                <div class="logo-icon">B</div>
+                <div class="logo-text">BAMBURI <span>SACCO</span></div>
+            </div>
+        </div>
+        
+        <ul class="nav-links">
+            <li>
+                <a href="dashboard.html">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span class="nav-text">Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="savings.html">
+                    <i class="fas fa-piggy-bank"></i>
+                    <span class="nav-text">Savings</span>
+                </a>
+            </li>
+            <li>
+                <a href="loans.html">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span class="nav-text">Loans</span>
+                </a>
+            </li>
+            <li>
+                <a href="shares.html">
+                    <i class="fas fa-chart-line"></i>
+                    <span class="nav-text">Shares</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="guarantorship.html">
+                    <i class="fas fa-user-friends"></i>
+                    <span class="nav-text">Guarantorship</span>
+                </a>
+            </li>
+            <li>
+                <a href="statements.html">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span class="nav-text">Statements</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="communication.html">
+                    <i class="fas fa-comments"></i>
+                    <span class="nav-text">Communication</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-cog"></i>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="login.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="nav-text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <h1><i class="fas fa-user-friends"></i> Guarantorship Management</h1>
+            <div class="user-info">
+                <div class="notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">2</span>
+                </div>
+                <div class="user-avatar">JM</div>
+                <span>John Mwangi (Member #: BW001234)</span>
+            </div>
+        </div>
+
+        <!-- Guarantorship Overview Cards -->
+        <div class="overview-cards">
+            <div class="overview-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-handshake"></i> Active Guarantees</h3>
+                    <div class="card-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+                <div class="card-value">KES 200,000.00</div>
+                <div class="card-subtitle">For 2 members' loans</div>
+                <div class="card-footer">
+                    <span>Guarantee Limit: KES 500,000</span>
+                    <span style="color: var(--primary-green); font-weight: 600;">40% used</span>
+                </div>
+            </div>
+            
+            <div class="overview-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-clock"></i> Pending Requests</h3>
+                    <div class="card-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                </div>
+                <div class="card-value">2</div>
+                <div class="card-subtitle">Require your attention</div>
+                <div class="card-footer">
+                    <span>Total Amount: KES 150,000</span>
+                    <span style="color: var(--accent-gold); font-weight: 600;">Response Needed</span>
+                </div>
+            </div>
+            
+            <div class="overview-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-history"></i> Guarantee History</h3>
+                    <div class="card-icon">
+                        <i class="fas fa-list-alt"></i>
+                    </div>
+                </div>
+                <div class="card-value">5</div>
+                <div class="card-subtitle">Completed guarantees</div>
+                <div class="card-footer">
+                    <span>Last 12 months</span>
+                    <span style="color: var(--primary-green); font-weight: 600;">All repaid</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="action-btn" onclick="viewGuarantorPolicy()">
+                <i class="fas fa-file-contract"></i> Guarantor Policy
+            </button>
+            <button class="action-btn secondary">
+                <i class="fas fa-calculator"></i> Guarantee Calculator
+            </button>
+            <button class="action-btn outline">
+                <i class="fas fa-download"></i> Download Reports
+            </button>
+        </div>
+
+        <!-- Pending Guarantorship Requests -->
+        <div class="guarantorship-section">
+            <div class="section-header">
+                <h3 class="section-title"><i class="fas fa-inbox"></i> Pending Guarantorship Requests</h3>
+                <div class="filter-controls">
+                    <select class="filter-select">
+                        <option>All Requests</option>
+                        <option>Last 7 Days</option>
+                        <option>High Priority</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="requests-grid" id="pendingRequests">
+                <!-- Request 1 -->
+                <div class="request-card">
+                    <div class="request-header">
+                        <div class="request-info">
+                            <div class="member-name">Mary Wanjiku</div>
+                            <div class="member-id">Member #: BW005678</div>
+                            <div class="request-status status-pending">Pending - Expires in 2 days</div>
+                        </div>
+                    </div>
+                    
+                    <div class="request-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Loan Amount:</span>
+                            <span class="detail-value">KES 100,000.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Guarantee Amount:</span>
+                            <span class="detail-value">KES 100,000.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Loan Type:</span>
+                            <span class="detail-value">Emergency Loan</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Request Date:</span>
+                            <span class="detail-value">15 Nov 2023</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Message:</span>
+                            <span class="detail-value">"Kindly support my loan application"</span>
+                        </div>
+                    </div>
+                    
+                    <div class="request-actions">
+                        <button class="request-btn approve" onclick="approveRequest(1)">
+                            <i class="fas fa-check"></i> Accept Guarantee
+                        </button>
+                        <button class="request-btn reject" onclick="rejectRequest(1)">
+                            <i class="fas fa-times"></i> Decline
+                        </button>
+                        <button class="request-btn view" onclick="viewRequestDetails(1)">
+                            <i class="fas fa-eye"></i> Details
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Request 2 -->
+                <div class="request-card">
+                    <div class="request-header">
+                        <div class="request-info">
+                            <div class="member-name">Peter Kamau</div>
+                            <div class="member-id">Member #: BW003456</div>
+                            <div class="request-status status-pending">Pending - Expires in 5 days</div>
+                        </div>
+                    </div>
+                    
+                    <div class="request-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Loan Amount:</span>
+                            <span class="detail-value">KES 50,000.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Guarantee Amount:</span>
+                            <span class="detail-value">KES 50,000.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Loan Type:</span>
+                            <span class="detail-value">School Fees Loan</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Request Date:</span>
+                            <span class="detail-value">13 Nov 2023</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Message:</span>
+                            <span class="detail-value">"Need support for children's school fees"</span>
+                        </div>
+                    </div>
+                    
+                    <div class="request-actions">
+                        <button class="request-btn approve" onclick="approveRequest(2)">
+                            <i class="fas fa-check"></i> Accept Guarantee
+                        </button>
+                        <button class="request-btn reject" onclick="rejectRequest(2)">
+                            <i class="fas fa-times"></i> Decline
+                        </button>
+                        <button class="request-btn view" onclick="viewRequestDetails(2)">
+                            <i class="fas fa-eye"></i> Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Active Guarantees -->
+        <div class="guarantorship-section">
+            <div class="section-header">
+                <h3 class="section-title"><i class="fas fa-handshake"></i> My Active Guarantees</h3>
+                <div class="filter-controls">
+                    <select class="filter-select">
+                        <option>All Guarantees</option>
+                        <option>Active</option>
+                        <option>Completed</option>
+                    </select>
+                </div>
+            </div>
+            
+            <table class="guarantees-table">
+                <thead>
+                    <tr>
+                        <th>Member</th>
+                        <th>Loan Details</th>
+                        <th>Guarantee Amount</th>
+                        <th>Start Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div style="font-weight: 600; color: var(--primary-green);">Sarah Muthoni</div>
+                            <div style="font-size: 12px; color: #666;">BW002345</div>
+                        </td>
+                        <td>
+                            <div>Business Development Loan</div>
+                            <div style="font-size: 12px; color: #666;">KES 200,000 | 24 months</div>
+                        </td>
+                        <td>KES 100,000.00</td>
+                        <td>15 Mar 2023</td>
+                        <td><span class="guarantee-status status-approved">Active</span></td>
+                        <td>
+                            <button class="guarantee-action-btn" onclick="viewGuaranteeDetails(1)">View</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="font-weight: 600; color: var(--primary-green);">David Ochieng</div>
+                            <div style="font-size: 12px; color: #666;">BW004567</div>
+                        </td>
+                        <td>
+                            <div>Home Improvement Loan</div>
+                            <div style="font-size: 12px; color: #666;">KES 150,000 | 18 months</div>
+                        </td>
+                        <td>KES 100,000.00</td>
+                        <td>1 Aug 2023</td>
+                        <td><span class="guarantee-status status-approved">Active</span></td>
+                        <td>
+                            <button class="guarantee-action-btn" onclick="viewGuaranteeDetails(2)">View</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="font-weight: 600; color: var(--primary-green);">Grace Akinyi</div>
+                            <div style="font-size: 12px; color: #666;">BW006789</div>
+                        </td>
+                        <td>
+                            <div>Emergency Medical Loan</div>
+                            <div style="font-size: 12px; color: #666;">KES 80,000 | 12 months</div>
+                        </td>
+                        <td>KES 40,000.00</td>
+                        <td>15 Oct 2022</td>
+                        <td><span class="guarantee-status status-approved">Completed</span></td>
+                        <td>
+                            <button class="guarantee-action-btn" onclick="viewGuaranteeDetails(3)">Statement</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Guarantorship History -->
+        <div class="guarantorship-section">
+            <div class="section-header">
+                <h3 class="section-title"><i class="fas fa-history"></i> Guarantorship History</h3>
+                <div class="filter-controls">
+                    <select class="filter-select">
+                        <option>Last 12 Months</option>
+                        <option>2023</option>
+                        <option>2022</option>
+                        <option>All Time</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="requests-grid">
+                <!-- Historical Request 1 -->
+                <div class="request-card">
+                    <div class="request-header">
+                        <div class="request-info">
+                            <div class="member-name">James Kariuki</div>
+                            <div class="member-id">Member #: BW007890</div>
+                            <div class="request-status status-approved">Completed - Dec 2022</div>
+                        </div>
+                    </div>
+                    
+                    <div class="request-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Loan Amount:</span>
+                            <span class="detail-value">KES 120,000.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Guarantee Amount:</span>
+                            <span class="detail-value">KES 60,000.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Loan Type:</span>
+                            <span class="detail-value">Personal Loan</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Status:</span>
+                            <span class="detail-value" style="color: var(--primary-green);">Fully Repaid</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Historical Request 2 -->
+                <div class="request-card">
+                    <div class="request-header">
+                        <div class="request-info">
+                            <div class="member-name">Elizabeth Wambui</div>
+                            <div class="member-id">Member #: BW008901</div>
+                            <div class="request-status status-rejected">Declined - Sep 2023</div>
+                        </div>
+                    </div>
+                    
+                    <div class="request-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Loan Amount:</span>
+                            <span class="detail-value">KES 300,000.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Guarantee Amount:</span>
+                            <span class="detail-value">KES 150,000.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Loan Type:</span>
+                            <span class="detail-value">Business Loan</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Reason:</span>
+                            <span class="detail-value" style="color: #f44336;">Exceeded my limit</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div id="confirmationModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTitle">Confirm Action</h3>
+                    <button class="close-btn" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Modal content will be inserted here -->
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-btn secondary" onclick="closeModal()">Cancel</button>
+                    <button class="modal-btn primary" id="confirmActionBtn">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentRequestId = null;
+        let currentAction = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-links li');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+        
+        function viewGuarantorPolicy() {
+            const modal = document.getElementById('confirmationModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+            const confirmBtn = document.getElementById('confirmActionBtn');
+            
+            title.innerHTML = '<i class="fas fa-file-contract"></i> Guarantor Policy';
+            body.innerHTML = `
+                <div style="line-height: 1.6;">
+                    <h4>Guarantor Responsibilities:</h4>
+                    <ul style="margin: 10px 0 20px 20px;">
+                        <li>Guarantor is liable for loan repayment if primary borrower defaults</li>
+                        <li>Maximum guarantee limit is 3x your share capital</li>
+                        <li>You can guarantee up to 3 members simultaneously</li>
+                        <li>Guarantee period matches loan repayment period</li>
+                        <li>Guarantor's own loan limit reduces by guarantee amount</li>
+                    </ul>
+                    
+                    <h4>Important Notes:</h4>
+                    <ul style="margin: 10px 0 20px 20px;">
+                        <li>Review borrower's repayment history before accepting</li>
+                        <li>Monitor guaranteed loans regularly</li>
+                        <li>Notify SACCO immediately of any repayment issues</li>
+                        <li>Guarantee commitment is legally binding</li>
+                    </ul>
+                    
+                    <p style="margin-top: 20px; padding: 10px; background-color: rgba(10, 143, 90, 0.05); border-radius: 6px;">
+                        <i class="fas fa-info-circle"></i> Your current guarantee limit: <strong>KES 500,000</strong><br>
+                        Available guarantee capacity: <strong>KES 300,000</strong>
+                    </p>
+                </div>
+            `;
+            
+            confirmBtn.innerHTML = 'I Understand';
+            confirmBtn.onclick = function() {
+                alert('Guarantor policy acknowledged.');
+                closeModal();
+            };
+            
+            modal.style.display = 'block';
+        }
+        
+        function approveRequest(requestId) {
+            currentRequestId = requestId;
+            currentAction = 'approve';
+            
+            const modal = document.getElementById('confirmationModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+            const confirmBtn = document.getElementById('confirmActionBtn');
+            
+            title.innerHTML = '<i class="fas fa-check-circle"></i> Accept Guarantee Request';
+            
+            let requestDetails = '';
+            if (requestId === 1) {
+                requestDetails = 'Mary Wanjiku (BW005678) - KES 100,000 Emergency Loan';
+            } else {
+                requestDetails = 'Peter Kamau (BW003456) - KES 50,000 School Fees Loan';
+            }
+            
+            body.innerHTML = `
+                <p>Are you sure you want to accept this guarantee request?</p>
+                <div style="margin: 15px 0; padding: 15px; background-color: rgba(10, 143, 90, 0.05); border-radius: 6px;">
+                    <strong>Request Details:</strong><br>
+                    ${requestDetails}<br>
+                    <strong>Your guarantee amount:</strong> ${requestId === 1 ? 'KES 100,000' : 'KES 50,000'}
+                </div>
+                <p style="color: #666; font-size: 14px;">
+                    <i class="fas fa-exclamation-triangle"></i> This action is legally binding. You will be responsible for loan repayment if the borrower defaults.
+                </p>
+            `;
+            
+            confirmBtn.innerHTML = 'Yes, Accept Guarantee';
+            confirmBtn.onclick = confirmApprove;
+            
+            modal.style.display = 'block';
+        }
+        
+        function rejectRequest(requestId) {
+            currentRequestId = requestId;
+            currentAction = 'reject';
+            
+            const modal = document.getElementById('confirmationModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+            const confirmBtn = document.getElementById('confirmActionBtn');
+            
+            title.innerHTML = '<i class="fas fa-times-circle"></i> Decline Guarantee Request';
+            
+            let requestDetails = '';
+            if (requestId === 1) {
+                requestDetails = 'Mary Wanjiku (BW005678) - KES 100,000 Emergency Loan';
+            } else {
+                requestDetails = 'Peter Kamau (BW003456) - KES 50,000 School Fees Loan';
+            }
+            
+            body.innerHTML = `
+                <p>Are you sure you want to decline this guarantee request?</p>
+                <div style="margin: 15px 0; padding: 15px; background-color: rgba(244, 67, 54, 0.05); border-radius: 6px;">
+                    <strong>Request Details:</strong><br>
+                    ${requestDetails}
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Reason for declining (optional):</label>
+                    <textarea id="rejectReason" class="form-input" placeholder="Enter reason for declining..." style="width: 100%; height: 80px;"></textarea>
+                </div>
+            `;
+            
+            confirmBtn.innerHTML = 'Confirm Decline';
+            confirmBtn.onclick = confirmReject;
+            
+            modal.style.display = 'block';
+        }
+        
+        function confirmApprove() {
+            // Simulate API call
+            const requestCard = document.querySelector(`#pendingRequests .request-card:nth-child(${currentRequestId})`);
+            
+            // Show loading state
+            const confirmBtn = document.getElementById('confirmActionBtn');
+            const originalText = confirmBtn.innerHTML;
+            confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            confirmBtn.disabled = true;
+            
+            setTimeout(() => {
+                // Update UI
+                requestCard.querySelector('.request-status').className = 'request-status status-approved';
+                requestCard.querySelector('.request-status').textContent = 'Accepted - Awaiting SACCO approval';
+                
+                // Disable buttons
+                const buttons = requestCard.querySelectorAll('.request-btn');
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                    btn.style.opacity = '0.6';
+                    btn.style.cursor = 'not-allowed';
+                });
+                
+                // Update overview card
+                const pendingCount = document.querySelector('.overview-cards .overview-card:nth-child(2) .card-value');
+                const activeAmount = document.querySelector('.overview-cards .overview-card:nth-child(1) .card-value');
+                
+                // Reduce pending count
+                const currentPending = parseInt(pendingCount.textContent);
+                pendingCount.textContent = (currentPending - 1).toString();
+                
+                // Increase active amount (simplified)
+                const currentActive = activeAmount.textContent.replace('KES ', '').replace(',', '');
+                const newAmount = parseInt(currentActive) + (currentRequestId === 1 ? 100000 : 50000);
+                activeAmount.textContent = 'KES ' + newAmount.toLocaleString() + '.00';
+                
+                // Update card footer
+                const cardFooter = document.querySelector('.overview-cards .overview-card:nth-child(1) .card-footer span:last-child');
+                const newPercentage = Math.round((newAmount / 500000) * 100);
+                cardFooter.textContent = newPercentage + '% used';
+                
+                alert('Guarantee request accepted successfully! The SACCO will review and finalize.');
+                closeModal();
+                
+                // Reset button
+                confirmBtn.innerHTML = originalText;
+                confirmBtn.disabled = false;
+            }, 1500);
+        }
+        
+        function confirmReject() {
+            const reason = document.getElementById('rejectReason').value;
+            
+            // Simulate API call
+            const requestCard = document.querySelector(`#pendingRequests .request-card:nth-child(${currentRequestId})`);
+            
+            // Show loading state
+            const confirmBtn = document.getElementById('confirmActionBtn');
+            const originalText = confirmBtn.innerHTML;
+            confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            confirmBtn.disabled = true;
+            
+            setTimeout(() => {
+                // Update UI
+                requestCard.querySelector('.request-status').className = 'request-status status-rejected';
+                requestCard.querySelector('.request-status').textContent = 'Declined';
+                
+                // Disable buttons
+                const buttons = requestCard.querySelectorAll('.request-btn');
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                    btn.style.opacity = '0.6';
+                    btn.style.cursor = 'not-allowed';
+                });
+                
+                // Update overview card
+                const pendingCount = document.querySelector('.overview-cards .overview-card:nth-child(2) .card-value');
+                const currentPending = parseInt(pendingCount.textContent);
+                pendingCount.textContent = (currentPending - 1).toString();
+                
+                alert('Guarantee request declined successfully. ' + (reason ? 'Reason: ' + reason : ''));
+                closeModal();
+                
+                // Reset button
+                confirmBtn.innerHTML = originalText;
+                confirmBtn.disabled = false;
+            }, 1500);
+        }
+        
+        function viewRequestDetails(requestId) {
+            const modal = document.getElementById('confirmationModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+            const confirmBtn = document.getElementById('confirmActionBtn');
+            
+            title.innerHTML = '<i class="fas fa-info-circle"></i> Request Details';
+            
+            let details = '';
+            if (requestId === 1) {
+                details = `
+                    <div style="line-height: 1.6;">
+                        <h4>Mary Wanjiku (BW005678)</h4>
+                        <div class="detail-row">
+                            <span class="detail-label">Loan Type:</span>
+                            <span class="detail-value">Emergency Loan</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Loan Amount:</span>
+                            <span class="detail-value">KES 100,000.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Repayment Period:</span>
+                            <span class="detail-value">12 months</span>
+                        </div>
+                        <div class="detail-label">Borrower's Repayment History:</span>
+                        <div style="margin: 10px 0; padding: 10px; background-color: rgba(10, 143, 90, 0.05); border-radius: 6px;">
+                            <div style="color: var(--primary-green);"><i class="fas fa-check-circle"></i> 6 loans completed</div>
+                            <div style="color: var(--primary-green);"><i class="fas fa-check-circle"></i> 100% on-time repayment</div>
+                            <div style="color: var(--primary-green);"><i class="fas fa-check-circle"></i> 3 years membership</div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                details = `
+                    <div style="line-height: 1.6;">
+                        <h4>Peter Kamau (BW003456)</h4>
+                        <div class="detail-row">
+                            <span class="detail-label">Loan Type:</span>
+                            <span class="detail-value">School Fees Loan</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Loan Amount:</span>
+                            <span class="detail-value">KES 50,000.00</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Repayment Period:</span>
+                            <span class="detail-value">9 months</span>
+                        </div>
+                        <div class="detail-label">Borrower's Repayment History:</div>
+                        <div style="margin: 10px 0; padding: 10px; background-color: rgba(245, 184, 0, 0.05); border-radius: 6px;">
+                            <div style="color: var(--accent-gold);"><i class="fas fa-exclamation-circle"></i> 2 loans completed</div>
+                            <div style="color: var(--accent-gold);"><i class="fas fa-exclamation-circle"></i> 90% on-time repayment</div>
+                            <div style="color: var(--accent-gold);"><i class="fas fa-exclamation-circle"></i> 1 year membership</div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            body.innerHTML = details;
+            confirmBtn.innerHTML = 'Close';
+            confirmBtn.onclick = closeModal;
+            
+            modal.style.display = 'block';
+        }
+        
+        function viewGuaranteeDetails(guaranteeId) {
+            alert('Viewing guarantee details for ID: ' + guaranteeId);
+            // In a real application, this would open a detailed view or modal
+        }
+        
+        function closeModal() {
+            document.getElementById('confirmationModal').style.display = 'none';
+            currentRequestId = null;
+            currentAction = null;
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('confirmationModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

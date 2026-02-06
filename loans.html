@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bamburi Wananchi SACCO - Loans</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #0A8F5A;
+            --light-green: #10b26c;
+            --accent-gold: #F5B800;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(to bottom, var(--primary-green), #087349);
+            color: var(--white);
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .logo-text span {
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            padding: 20px 0;
+        }
+
+        .nav-links li {
+            list-style: none;
+            padding: 12px 20px;
+            transition: all 0.3s;
+        }
+
+        .nav-links li:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links li.active {
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-links li.active a {
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .nav-links i {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header h1 {
+            color: var(--primary-green);
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-green);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .notification-icon {
+            position: relative;
+            font-size: 20px;
+            color: var(--primary-green);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Loan Overview Cards */
+        .overview-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .overview-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 25px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
+            transition: all 0.3s;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(10, 143, 90, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .card-title {
+            font-size: 18px;
+            color: var(--primary-green);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(10, 143, 90, 0.1), rgba(16, 178, 108, 0.1));
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .card-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .card-subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .actions-title {
+            font-size: 18px;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: var(--white);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(10, 143, 90, 0.3);
+        }
+
+        .action-btn.secondary {
+            background: linear-gradient(135deg, var(--accent-gold), #e0a800);
+        }
+
+        /* Loan Products Section */
+        .loan-products {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: var(--primary-green);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-action {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+
+        .section-action:hover {
+            color: var(--light-green);
+            text-decoration: underline;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            border: 1px solid rgba(10, 143, 90, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+            background-color: rgba(10, 143, 90, 0.02);
+        }
+
+        .product-card:hover {
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 12px rgba(10, 143, 90, 0.1);
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .product-name {
+            font-weight: 600;
+            color: var(--primary-green);
+            font-size: 16px;
+        }
+
+        .product-type {
+            font-size: 12px;
+            color: #666;
+            background-color: rgba(10, 143, 90, 0.1);
+            padding: 3px 10px;
+            border-radius: 10px;
+        }
+
+        .product-details {
+            margin-bottom: 15px;
+        }
+
+        .product-feature {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .feature-label {
+            color: #666;
+        }
+
+        .feature-value {
+            font-weight: 500;
+            color: var(--primary-green);
+        }
+
+        .product-eligibility {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: rgba(10, 143, 90, 0.05);
+            border-radius: 5px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .product-btn {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid var(--primary-green);
+            background-color: transparent;
+            color: var(--primary-green);
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .product-btn:hover {
+            background-color: rgba(10, 143, 90, 0.1);
+        }
+
+        .product-btn.primary {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .product-btn.primary:hover {
+            background-color: #087349;
+        }
+
+        /* Active Loans Section */
+        .active-loans {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .loans-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .loans-table th {
+            text-align: left;
+            padding: 12px 15px;
+            background-color: rgba(10, 143, 90, 0.05);
+            color: var(--primary-green);
+            font-weight: 600;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .loans-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .loans-table tr:hover {
+            background-color: rgba(10, 143, 90, 0.02);
+        }
+
+        .loan-status {
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-active {
+            background-color: rgba(10, 143, 90, 0.1);
+            color: var(--primary-green);
+        }
+
+        .status-pending {
+            background-color: rgba(245, 184, 0, 0.1);
+            color: var(--accent-gold);
+        }
+
+        .status-approved {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+        }
+
+        .status-rejected {
+            background-color: rgba(244, 67, 54, 0.1);
+            color: #F44336;
+        }
+
+        .loan-action-btn {
+            padding: 6px 12px;
+            border: 1px solid var(--primary-green);
+            background-color: transparent;
+            color: var(--primary-green);
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .loan-action-btn:hover {
+            background-color: rgba(10, 143, 90, 0.1);
+        }
+
+        .loan-action-btn.primary {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .loan-action-btn.primary:hover {
+            background-color: #087349;
+        }
+
+        /* Loan Application Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .close-btn:hover {
+            color: var(--primary-green);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--primary-green);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(10, 143, 90, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-btn.primary {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .modal-btn.primary:hover {
+            background-color: #087349;
+        }
+
+        .modal-btn.secondary {
+            background-color: #f5f5f5;
+            color: #666;
+        }
+
+        .modal-btn.secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 70px;
+            }
+            
+            .sidebar .logo-text, .sidebar .nav-text {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 70px;
+            }
+            
+            .overview-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .loans-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo-container">
+            <div class="logo">
+                <div class="logo-icon">B</div>
+                <div class="logo-text">BAMBURI <span>SACCO</span></div>
+            </div>
+        </div>
+        
+        <ul class="nav-links">
+            <li>
+                <a href="dashboard.html">
+                    <i class="fas fa-home"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span class="nav-text">Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="savings.html">
+                    <i class="fas fa-piggy-bank"></i>
+                    <span class="nav-text">Savings</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="loans.html">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span class="nav-text">Loans</span>
+                </a>
+            </li>
+            <li>
+                <a href="shares.html">
+                    <i class="fas fa-chart-line"></i>
+                    <span class="nav-text">Shares</span>
+                </a>
+            </li>
+            <li>
+                <a href="guarantorship.html">
+                    <i class="fas fa-user-friends"></i>
+                    <span class="nav-text">Guarantorship</span>
+                </a>
+            </li>
+            <li>
+                <a href="statements.html">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span class="nav-text">Statements</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="communication.html">
+                    <i class="fas fa-comments"></i>
+                    <span class="nav-text">Communication</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-cog"></i>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="login.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="nav-text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <h1><i class="fas fa-hand-holding-usd"></i> Loan Management</h1>
+            <div class="user-info">
+                <div class="notification-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="user-avatar">JM</div>
+                <span>John Mwangi (Member #: BW001234)</span>
+            </div>
+        </div>
+
+        <!-- Loan Overview Cards -->
+        <div class="overview-cards">
+            <div class="overview-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-file-invoice-dollar"></i> Active Loan Balance</h3>
+                    <div class="card-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                </div>
+                <div class="card-value">KES 500,000.00</div>
+                <div class="card-subtitle">2 active loans</div>
+                <div class="card-footer">
+                    <span>Next Payment Due: 15 Dec 2023</span>
+                    <span>KES 25,000</span>
+                </div>
+            </div>
+            
+            <div class="overview-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-chart-line"></i> Loan Limit Available</h3>
+                    <div class="card-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                </div>
+                <div class="card-value">KES 350,000.00</div>
+                <div class="card-subtitle">Based on your shares</div>
+                <div class="card-footer">
+                    <span>Maximum Limit: KES 850,000</span>
+                    <span>58% utilized</span>
+                </div>
+            </div>
+            
+            <div class="overview-card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-history"></i> Repayment History</h3>
+                    <div class="card-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+                <div class="card-value">KES 150,000.00</div>
+                <div class="card-subtitle">Paid this year</div>
+                <div class="card-footer">
+                    <span>Timely Payments: 12/12</span>
+                    <span>Excellent Record</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h3 class="actions-title"><i class="fas fa-bolt"></i> Quick Actions</h3>
+            <div class="action-buttons">
+                <button class="action-btn" onclick="openApplicationModal()">
+                    <i class="fas fa-file-signature"></i> Apply for Loan
+                </button>
+                <button class="action-btn">
+                    <i class="fas fa-money-check-alt"></i> Make Repayment
+                </button>
+                <button class="action-btn secondary">
+                    <i class="fas fa-file-alt"></i> View Statement
+                </button>
+                <button class="action-btn">
+                    <i class="fas fa-question-circle"></i> Loan Calculator
+                </button>
+            </div>
+        </div>
+
+        <!-- Loan Products -->
+        <div class="loan-products">
+            <div class="section-header">
+                <h3 class="section-title"><i class="fas fa-list-alt"></i> Available Loan Products</h3>
+                <a href="#" class="section-action"><i class="fas fa-info-circle"></i> View All Products</a>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-name">Development Loan</div>
+                        <div class="product-type">Business</div>
+                    </div>
+                    <div class="product-details">
+                        <div class="product-feature">
+                            <span class="feature-label">Maximum Amount</span>
+                            <span class="feature-value">KES 2,000,000</span>
+                        </div>
+                        <div class="product-feature">
+                            <span class="feature-label">Interest Rate</span>
+                            <span class="feature-value">12% p.a.</span>
+                        </div>
+                        <div class="product-feature">
+                            <span class="feature-label">Repayment Period</span>
+                            <span class="feature-value">36 months</span>
+                        </div>
+                        <div class="product-feature">
+                            <span class="feature-label">Processing Fee</span>
+                            <span class="feature-value">2%</span>
+                        </div>
+                    </div>
+                    <div class="product-eligibility">
+                        <i class="fas fa-check-circle"></i> Requires minimum 3 years membership
+                    </div>
+                    <div class="product-actions">
+                        <button class="product-btn"><i class="fas fa-info-circle"></i> Details</button>
+                        <button class="product-btn primary" onclick="openApplicationModal()"><i class="fas fa-arrow-right"></i> Apply</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-name">Emergency Loan</div>
+                        <div class="product-type">Personal</div>
+                    </div>
+                    <div class="product-details">
+                        <div class="product-feature">
+                            <span class="feature-label">Maximum Amount</span>
+                            <span class="feature-value">KES 300,000</span>
+                        </div>
+                        <div class="product-feature">
+                            <span class="feature-label">Interest Rate</span>
+                            <span class="feature-value">10% p.a.</span>
+                        </div>
+                        <div class="product-feature">
+                            <span class="feature-label">Repayment Period</span>
+                            <span class="feature-value">12 months</span>
+                        </div>
+                        <div class="product-feature">
+                            <span class="feature-label">Processing Fee</span>
+                            <span class="feature-value">1.5%</span>
+                        </div>
+                    </div>
+                    <div class="product-eligibility">
+                        <i class="fas fa-check-circle"></i> Available for all active members
+                    </div>
+                    <div class="product-actions">
+                        <button class="product-btn"><i class="fas fa-info-circle"></i> Details</button>
+                        <button class="product-btn primary" onclick="openApplicationModal()"><i class="fas fa-arrow-right"></i> Apply</button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-header">
+                        <div class="product-name">School Fees Loan</div>
+                        <div class="product-type">Education</div>
+                    </div>
+                    <div class="product-details">
+                        <div class="product-feature">
+                            <span class="feature-label">Maximum Amount</span>
+                            <span class="feature-value">KES 500,000</span>
+                        </div>
+                        <div class="product-feature">
+                            <span class="feature-label">Interest Rate</span>
+                            <span class="feature-value">8% p.a.</span>
+                        </div>
+                        <div class="product-feature">
+                            <span class="feature-label">Repayment Period</span>
+                            <span class="feature-value">24 months</span>
+                        </div>
+                        <div class="product-feature">
+                            <span class="feature-label">Processing Fee</span>
+                            <span class="feature-value">1%</span>
+                        </div>
+                    </div>
+                    <div class="product-eligibility">
+                        <i class="fas fa-check-circle"></i> Requires school admission letter
+                    </div>
+                    <div class="product-actions">
+                        <button class="product-btn"><i class="fas fa-info-circle"></i> Details</button>
+                        <button class="product-btn primary" onclick="openApplicationModal()"><i class="fas fa-arrow-right"></i> Apply</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active & Pending Loans -->
+        <div class="active-loans">
+            <div class="section-header">
+                <h3 class="section-title"><i class="fas fa-clipboard-list"></i> My Loans</h3>
+                <div class="filter-controls">
+                    <select class="form-select" style="width: 200px;">
+                        <option>All Loans</option>
+                        <option>Active Loans</option>
+                        <option>Pending Applications</option>
+                        <option>Completed Loans</option>
+                    </select>
+                </div>
+            </div>
+            
+            <table class="loans-table">
+                <thead>
+                    <tr>
+                        <th>Loan Details</th>
+                        <th>Amount</th>
+                        <th>Disbursed</th>
+                        <th>Due Date</th>
+                        <th>Balance</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div style="font-weight: 600; color: var(--primary-green);">Business Development</div>
+                            <div style="font-size: 12px; color: #666;">Loan #: BW-LN-2023-0456</div>
+                        </td>
+                        <td>KES 400,000.00</td>
+                        <td>15 Jun 2023</td>
+                        <td>15 Dec 2023</td>
+                        <td>KES 300,000.00</td>
+                        <td><span class="loan-status status-active">Active</span></td>
+                        <td>
+                            <button class="loan-action-btn">View</button>
+                            <button class="loan-action-btn primary">Repay</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="font-weight: 600; color: var(--primary-green);">Emergency Medical</div>
+                            <div style="font-size: 12px; color: #666;">Loan #: BW-LN-2023-0789</div>
+                        </td>
+                        <td>KES 100,000.00</td>
+                        <td>1 Sep 2023</td>
+                        <td>1 Dec 2023</td>
+                        <td>KES 75,000.00</td>
+                        <td><span class="loan-status status-active">Active</span></td>
+                        <td>
+                            <button class="loan-action-btn">View</button>
+                            <button class="loan-action-btn primary">Repay</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="font-weight: 600; color: var(--primary-green);">School Fees Loan</div>
+                            <div style="font-size: 12px; color: #666;">Loan #: BW-LN-2023-1011</div>
+                        </td>
+                        <td>KES 250,000.00</td>
+                        <td>Pending</td>
+                        <td>N/A</td>
+                        <td>KES 250,000.00</td>
+                        <td><span class="loan-status status-pending">Under Review</span></td>
+                        <td>
+                            <button class="loan-action-btn">Track</button>
+                            <button class="loan-action-btn">Cancel</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="font-weight: 600; color: var(--primary-green);">Home Improvement</div>
+                            <div style="font-size: 12px; color: #666;">Loan #: BW-LN-2022-0345</div>
+                        </td>
+                        <td>KES 150,000.00</td>
+                        <td>15 Jan 2022</td>
+                        <td>15 Jul 2023</td>
+                        <td>KES 0.00</td>
+                        <td><span class="loan-status status-approved">Completed</span></td>
+                        <td>
+                            <button class="loan-action-btn">Statement</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Loan Application Modal -->
+        <div id="applicationModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title"><i class="fas fa-file-signature"></i> New Loan Application</h3>
+                    <button class="close-btn" onclick="closeApplicationModal()">&times;</button>
+                </div>
+                
+                <form id="loanApplicationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Loan Product *</label>
+                            <select class="form-select" required>
+                                <option value="">Select loan product</option>
+                                <option value="development">Development Loan</option>
+                                <option value="emergency">Emergency Loan</option>
+                                <option value="school">School Fees Loan</option>
+                                <option value="personal">Personal Loan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Loan Amount (KES) *</label>
+                            <input type="number" class="form-input" placeholder="Enter amount" min="10000" max="2000000" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Repayment Period (Months) *</label>
+                            <select class="form-select" required>
+                                <option value="">Select period</option>
+                                <option value="6">6 months</option>
+                                <option value="12">12 months</option>
+                                <option value="24">24 months</option>
+                                <option value="36">36 months</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Purpose of Loan *</label>
+                            <select class="form-select" required>
+                                <option value="">Select purpose</option>
+                                <option value="business">Business Development</option>
+                                <option value="education">Education</option>
+                                <option value="medical">Medical Expenses</option>
+                                <option value="home">Home Improvement</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Detailed Purpose Description *</label>
+                        <textarea class="form-textarea" placeholder="Please describe in detail how you plan to use the loan funds..." required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Guarantor 1 Member # *</label>
+                            <input type="text" class="form-input" placeholder="Enter member number" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Guarantor 2 Member #</label>
+                            <input type="text" class="form-input" placeholder="Enter member number (optional)">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Additional Notes</label>
+                        <textarea class="form-textarea" placeholder="Any additional information..."></textarea>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button type="button" class="modal-btn secondary" onclick="closeApplicationModal()">Cancel</button>
+                        <button type="submit" class="modal-btn primary">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple script for sidebar navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-links li');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all items
+                    navItems.forEach(i => i.classList.remove('active'));
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                });
+            });
+            
+            // Loan application form submission
+            const loanForm = document.getElementById('loanApplicationForm');
+            if (loanForm) {
+                loanForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Loan application submitted successfully! Our team will review your application within 48 hours.');
+                    closeApplicationModal();
+                });
+            }
+        });
+        
+        function openApplicationModal() {
+            document.getElementById('applicationModal').style.display = 'block';
+        }
+        
+        function closeApplicationModal() {
+            document.getElementById('applicationModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('applicationModal');
+            if (event.target == modal) {
+                closeApplicationModal();
+            }
+        }
+    </script>
+</body>
+</html>

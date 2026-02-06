@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ushuru Investment Co-operative - Profile</title>
+    <title>Bamburi Wananchi SACCO - Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --maroon: #7A1F23;
-            --gold: #F5B800;
-            --brown-gray: #6C3F33;
+            --primary-green: #0A8F5A;
+            --light-green: #10b26c;
+            --accent-gold: #F5B800;
             --light-gray: #f5f5f5;
             --dark-gray: #333;
             --white: #ffffff;
@@ -33,7 +33,7 @@
         /* Sidebar Styles */
         .sidebar {
             width: 250px;
-            background: linear-gradient(to bottom, var(--maroon), #5a1519);
+            background: linear-gradient(to bottom, var(--primary-green), #087349);
             color: var(--white);
             height: 100vh;
             position: fixed;
@@ -58,13 +58,14 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background-color: var(--gold);
+            background-color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--maroon);
+            color: var(--primary-green);
             font-weight: bold;
+            font-size: 18px;
         }
 
         .logo-text {
@@ -73,7 +74,7 @@
         }
 
         .logo-text span {
-            color: var(--gold);
+            color: var(--accent-gold);
         }
 
         .nav-links {
@@ -91,9 +92,9 @@
         }
 
         .nav-links li.active {
-            background-color: var(--gold);
-            color: var(--maroon);
-            border-left: 4px solid var(--gold);
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
+            border-left: 4px solid var(--accent-gold);
         }
 
         .nav-links a {
@@ -105,7 +106,7 @@
         }
 
         .nav-links li.active a {
-            color: var(--maroon);
+            color: var(--primary-green);
             font-weight: bold;
         }
 
@@ -132,7 +133,7 @@
         }
 
         .header h1 {
-            color: var(--maroon);
+            color: var(--primary-green);
             font-size: 24px;
         }
 
@@ -146,7 +147,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: var(--maroon);
+            background-color: var(--primary-green);
             color: var(--white);
             display: flex;
             align-items: center;
@@ -157,15 +158,15 @@
         .notification-icon {
             position: relative;
             font-size: 20px;
-            color: var(--maroon);
+            color: var(--primary-green);
         }
 
         .notification-badge {
             position: absolute;
             top: -5px;
             right: -5px;
-            background-color: var(--gold);
-            color: var(--maroon);
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
             border-radius: 50%;
             width: 18px;
             height: 18px;
@@ -173,6 +174,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: bold;
         }
 
         /* Profile Content Styles */
@@ -185,9 +187,10 @@
 
         .profile-card {
             background-color: var(--white);
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: var(--shadow);
             padding: 20px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
         }
 
         .profile-header {
@@ -197,14 +200,14 @@
             text-align: center;
             margin-bottom: 20px;
             padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(10, 143, 90, 0.1);
         }
 
         .profile-avatar {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background-color: var(--maroon);
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
             color: var(--white);
             display: flex;
             align-items: center;
@@ -212,13 +215,13 @@
             font-size: 40px;
             font-weight: bold;
             margin-bottom: 15px;
-            border: 4px solid var(--gold);
+            border: 4px solid var(--accent-gold);
         }
 
         .profile-name {
             font-size: 22px;
             font-weight: 600;
-            color: var(--maroon);
+            color: var(--primary-green);
             margin-bottom: 5px;
         }
 
@@ -231,8 +234,8 @@
         .profile-status {
             display: inline-block;
             padding: 4px 12px;
-            background-color: rgba(76, 175, 80, 0.1);
-            color: #4CAF50;
+            background-color: rgba(10, 143, 90, 0.1);
+            color: var(--primary-green);
             border-radius: 20px;
             font-size: 12px;
             font-weight: 500;
@@ -246,7 +249,14 @@
             display: flex;
             justify-content: space-between;
             padding: 10px 0;
-            border-bottom: 1px solid #f5f5f5;
+            border-bottom: 1px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .detail-item:hover {
+            background-color: rgba(10, 143, 90, 0.05);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 4px;
         }
 
         .detail-label {
@@ -256,6 +266,7 @@
 
         .detail-value {
             font-weight: 600;
+            color: var(--primary-green);
         }
 
         .profile-actions {
@@ -267,50 +278,58 @@
         .btn {
             padding: 10px;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             text-align: center;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .btn-primary {
-            background-color: var(--maroon);
+            background-color: var(--primary-green);
             color: var(--white);
         }
 
         .btn-primary:hover {
-            background-color: #5a1519;
+            background-color: #087349;
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
-            background-color: var(--gold);
-            color: var(--maroon);
+            background-color: var(--accent-gold);
+            color: var(--primary-green);
         }
 
         .btn-secondary:hover {
             background-color: #e0a800;
+            transform: translateY(-2px);
         }
 
         .btn-outline {
             background-color: transparent;
-            border: 1px solid var(--maroon);
-            color: var(--maroon);
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
         }
 
         .btn-outline:hover {
-            background-color: rgba(122, 31, 35, 0.1);
+            background-color: rgba(10, 143, 90, 0.1);
+            transform: translateY(-2px);
         }
 
         /* Profile Sections */
         .profile-section {
             background-color: var(--white);
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: var(--shadow);
             padding: 20px;
             margin-bottom: 20px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
         }
 
         .section-header {
@@ -319,20 +338,36 @@
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 2px solid rgba(10, 143, 90, 0.1);
         }
 
         .section-title {
             font-size: 18px;
-            color: var(--maroon);
+            color: var(--primary-green);
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--primary-green);
         }
 
         .section-action {
-            color: var(--maroon);
+            color: var(--primary-green);
             text-decoration: none;
             font-weight: 500;
             font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+
+        .section-action:hover {
+            color: var(--light-green);
+            text-decoration: underline;
         }
 
         .form-group {
@@ -356,29 +391,36 @@
             width: 100%;
             padding: 10px 12px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 14px;
-            transition: border 0.3s;
+            transition: all 0.3s;
         }
 
         .form-input:focus, .form-select:focus {
-            border-color: var(--maroon);
+            border-color: var(--primary-green);
             outline: none;
+            box-shadow: 0 0 0 3px rgba(10, 143, 90, 0.1);
+        }
+
+        .form-input[readonly] {
+            background-color: #f9f9f9;
+            cursor: not-allowed;
         }
 
         .form-textarea {
             width: 100%;
             padding: 10px 12px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 14px;
             resize: vertical;
             min-height: 100px;
         }
 
         .form-textarea:focus {
-            border-color: var(--maroon);
+            border-color: var(--primary-green);
             outline: none;
+            box-shadow: 0 0 0 3px rgba(10, 143, 90, 0.1);
         }
 
         .form-note {
@@ -395,45 +437,49 @@
         }
 
         .document-card {
-            border: 1px solid #eee;
-            border-radius: 6px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
+            border-radius: 8px;
             padding: 15px;
             text-align: center;
             transition: all 0.3s;
+            background-color: rgba(10, 143, 90, 0.02);
         }
 
         .document-card:hover {
-            border-color: var(--maroon);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 12px rgba(10, 143, 90, 0.15);
+            transform: translateY(-3px);
         }
 
         .document-icon {
             font-size: 24px;
-            color: var(--maroon);
+            color: var(--primary-green);
             margin-bottom: 10px;
         }
 
         .document-name {
             font-weight: 500;
             margin-bottom: 5px;
+            color: var(--primary-green);
         }
 
         .document-status {
             font-size: 12px;
-            padding: 2px 8px;
+            padding: 4px 10px;
             border-radius: 10px;
             display: inline-block;
             margin-bottom: 10px;
+            font-weight: 500;
         }
 
         .status-approved {
-            background-color: rgba(76, 175, 80, 0.1);
-            color: #4CAF50;
+            background-color: rgba(10, 143, 90, 0.1);
+            color: var(--primary-green);
         }
 
         .status-pending {
-            background-color: rgba(255, 152, 0, 0.1);
-            color: #FF9800;
+            background-color: rgba(245, 184, 0, 0.1);
+            color: var(--accent-gold);
         }
 
         .status-rejected {
@@ -448,9 +494,16 @@
         }
 
         .document-action {
-            color: var(--maroon);
+            color: var(--primary-green);
             text-decoration: none;
             font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .document-action:hover {
+            color: var(--light-green);
+            text-decoration: underline;
         }
 
         /* Next of Kin Section */
@@ -461,9 +514,17 @@
         }
 
         .kin-card {
-            border: 1px solid #eee;
-            border-radius: 6px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
+            border-radius: 8px;
             padding: 15px;
+            transition: all 0.3s;
+            background-color: rgba(10, 143, 90, 0.02);
+        }
+
+        .kin-card:hover {
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 12px rgba(10, 143, 90, 0.1);
+            transform: translateY(-3px);
         }
 
         .kin-header {
@@ -471,16 +532,21 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(10, 143, 90, 0.1);
         }
 
         .kin-name {
             font-weight: 600;
-            color: var(--maroon);
+            color: var(--primary-green);
         }
 
         .kin-relationship {
             font-size: 12px;
             color: #666;
+            background-color: rgba(10, 143, 90, 0.1);
+            padding: 2px 8px;
+            border-radius: 10px;
         }
 
         .kin-details {
@@ -488,7 +554,25 @@
         }
 
         .kin-detail {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .kin-detail strong {
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* KYC Status Badge */
+        .kyc-status {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: rgba(10, 143, 90, 0.1);
+            color: var(--primary-green);
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
         }
 
         /* Responsive Design */
@@ -522,6 +606,12 @@
             .kin-cards {
                 grid-template-columns: 1fr;
             }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
         }
     </style>
 </head>
@@ -530,8 +620,8 @@
     <div class="sidebar">
         <div class="logo-container">
             <div class="logo">
-                <div class="logo-icon">U</div>
-                <div class="logo-text">USHURU <span>INVESTMENT</span></div>
+                <div class="logo-icon">B</div>
+                <div class="logo-text">BAMBURI <span>SACCO</span></div>
             </div>
         </div>
         
@@ -549,24 +639,36 @@
                 </a>
             </li>
             <li>
-                <a href="contributions.html">
+                <a href="savings.html">
+                    <i class="fas fa-piggy-bank"></i>
+                    <span class="nav-text">Savings</span>
+                </a>
+            </li>
+            <li>
+                <a href="loans.html">
                     <i class="fas fa-hand-holding-usd"></i>
-                    <span class="nav-text">Contributions</span>
+                    <span class="nav-text">Loans</span>
                 </a>
             </li>
             <li>
-                <a href="investments.html">
+                <a href="shares.html">
                     <i class="fas fa-chart-line"></i>
-                    <span class="nav-text">Investments</span>
+                    <span class="nav-text">Shares</span>
                 </a>
             </li>
             <li>
-                <a href="refunds.html">
+                <a href="guarantorship.html">
+                    <i class="fas fa-user-friends"></i>
+                    <span class="nav-text">Guarantorship</span>
+                </a>
+            </li>
+            <li>
+                <a href="statements.html">
                     <i class="fas fa-file-invoice-dollar"></i>
-                    <span class="nav-text">Refunds</span>
+                    <span class="nav-text">Statements</span>
                 </a>
             </li>
-            <li>
+            <li class="active">
                 <a href="communication.html">
                     <i class="fas fa-comments"></i>
                     <span class="nav-text">Communication</span>
@@ -590,14 +692,14 @@
     <!-- Main Content -->
     <div class="main-content">
         <div class="header">
-            <h1>My Profile</h1>
+            <h1>Member Profile Management</h1>
             <div class="user-info">
                 <div class="notification-icon">
                     <i class="fas fa-bell"></i>
                     <span class="notification-badge">3</span>
                 </div>
                 <div class="user-avatar">JM</div>
-                <span>John Member</span>
+                <span>John Mwangi (Member #: BW001234)</span>
             </div>
         </div>
 
@@ -606,9 +708,10 @@
             <div class="profile-card">
                 <div class="profile-header">
                     <div class="profile-avatar">JM</div>
-                    <h2 class="profile-name">John Member</h2>
-                    <div class="profile-id">Member ID: USH-2023-0456</div>
+                    <h2 class="profile-name">John Mwangi</h2>
+                    <div class="profile-id">Member #: BW001234</div>
                     <span class="profile-status">Active Member</span>
+                    <div class="kyc-status">KYC: Verified <i class="fas fa-check-circle"></i></div>
                 </div>
                 
                 <div class="profile-details">
@@ -627,6 +730,10 @@
                     <div class="detail-item">
                         <span class="detail-label">Status</span>
                         <span class="detail-value">In Good Standing</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Last Updated</span>
+                        <span class="detail-value">Today, 10:30 AM</span>
                     </div>
                 </div>
                 
@@ -648,8 +755,8 @@
                 <!-- Personal Information -->
                 <div class="profile-section">
                     <div class="section-header">
-                        <h3 class="section-title">Personal Information</h3>
-                        <a href="#" class="section-action">Edit</a>
+                        <h3 class="section-title"><i class="fas fa-user-circle"></i> Personal Information</h3>
+                        <a href="#" class="section-action"><i class="fas fa-edit"></i> Edit</a>
                     </div>
                     
                     <form>
@@ -660,7 +767,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="form-input" value="Member" readonly>
+                                <input type="text" class="form-input" value="Mwangi" readonly>
                             </div>
                         </div>
                         
@@ -678,7 +785,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Email Address</label>
-                                <input type="email" class="form-input" value="john.member@example.com" readonly>
+                                <input type="email" class="form-input" value="john.mwangi@example.com" readonly>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Phone Number</label>
@@ -688,50 +795,48 @@
                         
                         <div class="form-group">
                             <label class="form-label">Physical Address</label>
-                            <input type="text" class="form-input" value="123 Main Street, Nairobi" readonly>
+                            <input type="text" class="form-input" value="123 Main Street, Mombasa" readonly>
                         </div>
                     </form>
                 </div>
 
-                <!-- Employment Information -->
+                <!-- Account Information -->
                 <div class="profile-section">
                     <div class="section-header">
-                        <h3 class="section-title">Employment Information</h3>
-                        <a href="#" class="section-action">Edit</a>
+                        <h3 class="section-title"><i class="fas fa-university"></i> Account Information</h3>
+                        <a href="#" class="section-action"><i class="fas fa-edit"></i> Edit</a>
                     </div>
                     
                     <form>
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">Employer</label>
+                                <label class="form-label">Bank Name</label>
                                 <input type="text" class="form-input" value="Kenya Commercial Bank" readonly>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Position</label>
-                                <input type="text" class="form-input" value="Senior Accountant" readonly>
+                                <label class="form-label">Account Number</label>
+                                <input type="text" class="form-input" value="1234567890" readonly>
                             </div>
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label">Employment Type</label>
-                                <input type="text" class="form-input" value="Permanent" readonly>
+                                <label class="form-label">Branch</label>
+                                <input type="text" class="form-input" value="Mombasa Main" readonly>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Work Address</label>
-                                <input type="text" class="form-input" value="KCB Plaza, Nairobi CBD" readonly>
+                                <label class="form-label">Account Type</label>
+                                <input type="text" class="form-input" value="Savings" readonly>
                             </div>
                         </div>
-                        
-                        
                     </form>
                 </div>
 
-                <!-- Documents -->
+                <!-- Documents Section -->
                 <div class="profile-section">
                     <div class="section-header">
-                        <h3 class="section-title">Documents & Verification</h3>
-                        <a href="#" class="section-action">Upload New</a>
+                        <h3 class="section-title"><i class="fas fa-file-alt"></i> KYC Documents</h3>
+                        <a href="#" class="section-action"><i class="fas fa-upload"></i> Upload New</a>
                     </div>
                     
                     <div class="documents-grid">
@@ -740,7 +845,7 @@
                                 <i class="fas fa-id-card"></i>
                             </div>
                             <div class="document-name">National ID</div>
-                            <div class="document-status status-approved">Approved</div>
+                            <div class="document-status status-approved">Verified</div>
                             <div class="document-actions">
                                 <a href="#" class="document-action">View</a>
                                 <a href="#" class="document-action">Download</a>
@@ -752,7 +857,7 @@
                                 <i class="fas fa-file-contract"></i>
                             </div>
                             <div class="document-name">Membership Form</div>
-                            <div class="document-status status-approved">Approved</div>
+                            <div class="document-status status-approved">Verified</div>
                             <div class="document-actions">
                                 <a href="#" class="document-action">View</a>
                                 <a href="#" class="document-action">Download</a>
@@ -764,7 +869,7 @@
                                 <i class="fas fa-receipt"></i>
                             </div>
                             <div class="document-name">KRA Pin Certificate</div>
-                            <div class="document-status status-pending">Pending</div>
+                            <div class="document-status status-pending">Pending Review</div>
                             <div class="document-actions">
                                 <a href="#" class="document-action">View</a>
                                 <a href="#" class="document-action">Re-upload</a>
@@ -776,44 +881,65 @@
                                 <i class="fas fa-portrait"></i>
                             </div>
                             <div class="document-name">Passport Photo</div>
-                            <div class="document-status status-approved">Approved</div>
+                            <div class="document-status status-approved">Verified</div>
                             <div class="document-actions">
                                 <a href="#" class="document-action">View</a>
                                 <a href="#" class="document-action">Download</a>
                             </div>
                         </div>
                     </div>
+                    <div class="form-note">
+                        <i class="fas fa-info-circle"></i> All documents are encrypted and securely stored. Staff will review uploaded documents within 24-48 hours.
+                    </div>
                 </div>
 
-                <!-- Next of Kin -->
+                <!-- Next of Kin Section -->
                 <div class="profile-section">
                     <div class="section-header">
-                        <h3 class="section-title">Next of Kin</h3>
-                        <a href="#" class="section-action">Add/Edit</a>
+                        <h3 class="section-title"><i class="fas fa-user-friends"></i> Next of Kin Information</h3>
+                        <a href="#" class="section-action"><i class="fas fa-plus-circle"></i> Add/Edit</a>
                     </div>
                     
                     <div class="kin-cards">
                         <div class="kin-card">
                             <div class="kin-header">
-                                <div class="kin-name">Jane Member</div>
+                                <div class="kin-name">Jane Mwangi</div>
                                 <div class="kin-relationship">Spouse</div>
                             </div>
                             <div class="kin-details">
-                                <div class="kin-detail"><strong>Phone:</strong> +254 723 456 789</div>
-                                <div class="kin-detail"><strong>ID No:</strong> 23456789</div>
-                                <div class="kin-detail"><strong>Relationship:</strong> Wife</div>
+                                <div class="kin-detail">
+                                    <strong>Phone:</strong> +254 723 456 789
+                                </div>
+                                <div class="kin-detail">
+                                    <strong>ID No:</strong> 23456789
+                                </div>
+                                <div class="kin-detail">
+                                    <strong>Relationship:</strong> Wife
+                                </div>
+                                <div class="kin-detail">
+                                    <strong>Allocation %:</strong> 60%
+                                </div>
                             </div>
                         </div>
                         
                         <div class="kin-card">
                             <div class="kin-header">
-                                <div class="kin-name">James Member</div>
+                                <div class="kin-name">James Mwangi</div>
                                 <div class="kin-relationship">Child</div>
                             </div>
                             <div class="kin-details">
-                                <div class="kin-detail"><strong>Phone:</strong> +254 734 567 890</div>
-                                <div class="kin-detail"><strong>ID No:</strong> 34567890</div>
-                                <div class="kin-detail"><strong>Relationship:</strong> Son</div>
+                                <div class="kin-detail">
+                                    <strong>Phone:</strong> +254 734 567 890
+                                </div>
+                                <div class="kin-detail">
+                                    <strong>ID No:</strong> 34567890
+                                </div>
+                                <div class="kin-detail">
+                                    <strong>Relationship:</strong> Son
+                                </div>
+                                <div class="kin-detail">
+                                    <strong>Allocation %:</strong> 40%
+                                </div>
                             </div>
                         </div>
                     </div>
