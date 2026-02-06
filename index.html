@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ushuru Investment Co-operative - Members Portal</title>
+    <title>Bamburi Wananchi SACCO - Members Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --maroon: #7A1F23;
-            --gold: #F5B800;
-            --brown-gray: #6C3F33;
+            --primary-green: #0A8F5A;
+            --light-green: #10b26c;
+            --accent-gold: #F5B800;
             --light-gray: #f5f5f5;
             --dark-gray: #333;
             --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -24,24 +24,47 @@
         }
 
         body {
-            background-color: var(--light-gray);
-            color: var(--dark-gray);
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-image: linear-gradient(135deg, rgba(10, 143, 90, 0.03), rgba(16, 178, 108, 0.03));
         }
 
         .login-container {
             display: flex;
-            min-height: 100vh;
+            max-width: 1100px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background-color: var(--white);
         }
 
+        /* Left Panel - Welcome Section */
         .login-left {
             flex: 1;
-            background: linear-gradient(to bottom right, var(--maroon), #5a1519);
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            color: var(--white);
+            padding: 50px 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            color: var(--white);
-            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-left::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
         }
 
         .login-logo {
@@ -51,33 +74,35 @@
             margin-bottom: 30px;
         }
 
-        .login-logo-icon {
+        .logo-image {
             width: 60px;
             height: 60px;
-            background-color: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--maroon);
-            font-weight: bold;
-            font-size: 24px;
+            border-radius: 12px;
+            object-fit: contain;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .login-logo-text {
             font-size: 28px;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .login-logo-text span {
-            color: var(--gold);
+            color: var(--accent-gold);
+            display: block;
+            font-size: 18px;
+            margin-top: 5px;
         }
 
         .login-tagline {
             font-size: 18px;
             margin-bottom: 40px;
-            text-align: center;
+            text-align: left;
             max-width: 500px;
+            line-height: 1.6;
+            opacity: 0.9;
         }
 
         .login-features {
@@ -92,16 +117,24 @@
         }
 
         .login-feature i {
-            color: var(--gold);
+            color: var(--accent-gold);
             font-size: 20px;
+            width: 24px;
         }
 
+        .login-feature span {
+            flex: 1;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        /* Right Panel - Login Form */
         .login-right {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px;
+            padding: 50px 40px;
         }
 
         .login-form {
@@ -111,13 +144,15 @@
 
         .form-title {
             font-size: 28px;
-            color: var(--maroon);
+            color: var(--primary-green);
             margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .form-subtitle {
             color: #666;
             margin-bottom: 30px;
+            font-size: 16px;
         }
 
         .form-group {
@@ -128,103 +163,242 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
+            color: #555;
+            font-size: 14px;
         }
 
         .form-input {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: border 0.3s;
+            padding: 14px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background-color: #f9f9f9;
         }
 
         .form-input:focus {
-            border-color: var(--maroon);
+            border-color: var(--primary-green);
+            background-color: var(--white);
             outline: none;
+            box-shadow: 0 0 0 3px rgba(10, 143, 90, 0.1);
         }
 
         .form-options {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .remember-me {
             display: flex;
             align-items: center;
             gap: 8px;
+            cursor: pointer;
+        }
+
+        .remember-checkbox {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            border: 2px solid #ddd;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .remember-checkbox.checked {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+        }
+
+        .remember-checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .remember-text {
+            font-size: 14px;
+            color: #666;
+            user-select: none;
         }
 
         .forgot-password {
-            color: var(--maroon);
+            color: var(--primary-green);
             text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .forgot-password:hover {
+            color: var(--light-green);
+            text-decoration: underline;
         }
 
         .btn {
             display: block;
             width: 100%;
-            padding: 12px;
+            padding: 16px;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         .btn-primary {
-            background-color: var(--maroon);
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
             color: var(--white);
+            box-shadow: 0 4px 15px rgba(10, 143, 90, 0.3);
         }
 
         .btn-primary:hover {
-            background-color: #5a1519;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 143, 90, 0.4);
         }
 
         .btn-secondary {
-            background-color: var(--gold);
-            color: var(--maroon);
+            background-color: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
         }
 
         .btn-secondary:hover {
-            background-color: #e0a800;
+            background-color: rgba(10, 143, 90, 0.05);
+            transform: translateY(-2px);
         }
 
         .form-footer {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .form-footer p {
             color: #666;
+            font-size: 14px;
         }
 
         .form-footer a {
-            color: var(--maroon);
+            color: var(--primary-green);
             text-decoration: none;
             font-weight: 500;
         }
 
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Demo Credentials Box */
+        .demo-box {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(10, 143, 90, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(10, 143, 90, 0.1);
+        }
+
+        .demo-title {
+            font-size: 14px;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .demo-credentials {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .demo-credentials strong {
+            color: var(--primary-green);
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .alert-error {
+            background-color: rgba(244, 67, 54, 0.1);
+            border: 1px solid rgba(244, 67, 54, 0.2);
+            color: #f44336;
+        }
+
+        .alert-success {
+            background-color: rgba(10, 143, 90, 0.1);
+            border: 1px solid rgba(10, 143, 90, 0.2);
+            color: var(--primary-green);
+        }
+
         /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .login-container {
                 flex-direction: column;
+                max-width: 500px;
             }
             
             .login-left {
+                padding: 40px 30px;
+            }
+            
+            .login-right {
+                padding: 40px 30px;
+            }
+            
+            .login-tagline {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-logo {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .login-features {
+                display: none;
+            }
+            
+            .form-options {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .login-left, .login-right {
                 padding: 30px 20px;
             }
         }
-        .logo-image {
-            width: 60px;
-            height: 60px;
-            border-radius: 8px;
-            object-fit: contain;
-            margin-right: 15px;
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Remove or hide the old logo icon */
-        .login-logo-icon {
-            display: none;
+        .login-form {
+            animation: fadeIn 0.6s ease-out;
         }
     </style>
 </head>
@@ -232,28 +406,34 @@
     <div class="login-container">
         <div class="login-left">
             <div class="login-logo">
-                <img src="images/ushuhuru.JPG" alt="Ushuru Investment Co-operative" class="logo-image">
-                <div class="login-logo-text">USHURU <span>INVESTMENT</span></div>
+                <!-- Replace with actual Bamburi SACCO logo -->
+                <div style="width: 60px; height: 60px; background-color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary-green); font-size: 24px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
+                    B
+                </div>
+                <div class="login-logo-text">
+                    BAMBURI WANANCHI SACCO
+                    <span>Member Portal</span>
+                </div>
             </div>
             <div class="login-tagline">
-                Members Portal - Manage your investments, track contributions, and communicate with the society in real-time
+                Access your savings, apply for loans, manage shares, and track your financial growth with Bamburi Wananchi SACCO.
             </div>
             <div class="login-features">
                 <div class="login-feature">
                     <i class="fas fa-shield-alt"></i>
-                    <span>Secure access with Two-Factor Authentication</span>
+                    <span>Secure & Encrypted - Bank-level security for all your transactions</span>
                 </div>
                 <div class="login-feature">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Real-time investment tracking and management</span>
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Mobile Friendly - Access your account from any device, anywhere</span>
                 </div>
                 <div class="login-feature">
-                    <i class="fas fa-file-contract"></i>
-                    <span>Online document submission and approval</span>
+                    <i class="fas fa-clock"></i>
+                    <span>24/7 Access - Manage your finances anytime, day or night</span>
                 </div>
                 <div class="login-feature">
-                    <i class="fas fa-comments"></i>
-                    <span>Direct communication with society management</span>
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>Quick Loans - Apply for loans online and get quick approval</span>
                 </div>
             </div>
         </div>
@@ -261,48 +441,146 @@
         <div class="login-right">
             <div class="login-form">
                 <h2 class="form-title">Member Login</h2>
-                <p class="form-subtitle">Access your investment portal</p>
+                <p class="form-subtitle">Enter your credentials to access your account</p>
+                
+                <!-- Error Message (Hidden by default) -->
+                <div class="alert alert-error" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i> Invalid member number or password. Please try again.
+                </div>
                 
                 <form id="loginForm">
                     <div class="form-group">
-                        <label class="form-label">Username or Member ID</label>
-                        <input type="text" class="form-input" placeholder="Enter your username" required>
+                        <label class="form-label">Member Number *</label>
+                        <input type="text" class="form-input" id="memberNumber" placeholder="Enter your member number" required>
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-input" placeholder="Enter your password" required>
+                        <label class="form-label">Password *</label>
+                        <input type="password" class="form-input" id="password" placeholder="Enter your password" required>
                     </div>
                     
                     <div class="form-options">
-                        <label class="remember-me">
-                            <input type="checkbox">
-                            <span>Remember me</span>
-                        </label>
-                        <a href="#" class="forgot-password">Forgot Password?</a>
+                        <div class="remember-me" id="rememberMe">
+                            <div class="remember-checkbox" id="rememberCheckbox"></div>
+                            <span class="remember-text">Remember me</span>
+                        </div>
+                        <a href="forgot-password.html" class="forgot-password">
+                            <i class="fas fa-key"></i> Forgot Password?
+                        </a>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary">Login to Portal</button>
+                    <button type="submit" class="btn btn-primary" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Login to Portal
+                    </button>
                     
-                    <div class="form-footer">
-                        New member? <a href="#">Register here</a>
-                    </div>
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='first-time-login.html'">
+                        <i class="fas fa-user-plus"></i> First Time Login
+                    </button>
                 </form>
                 
-                <div style="margin-top: 30px; padding: 20px; background-color: #f9f9f9; border-radius: 6px;">
-                    <p style="font-size: 14px; color: #666; margin-bottom: 10px;"><strong>Demo Credentials:</strong></p>
-                    <p style="font-size: 12px; color: #888;">Username: demo@ushuru.co.ke</p>
-                    <p style="font-size: 12px; color: #888;">Password: demo123</p>
+                <div class="form-footer">
+                    <p>Not a member yet? <a href="register.html">Join Bamburi Wananchi SACCO</a></p>
+                    <p style="margin-top: 10px; font-size: 12px;">
+                        <i class="fas fa-lock"></i> Your data is secured with 256-bit SSL encryption
+                    </p>
+                </div>
+                
+                <div class="demo-box">
+                    <div class="demo-title">
+                        <i class="fas fa-info-circle"></i> Demo Credentials
+                    </div>
+                    <div class="demo-credentials">
+                        <p><strong>Member Number:</strong> BW001234</p>
+                        <p><strong>Password:</strong> password123</p>
+                        <p style="margin-top: 10px; font-size: 12px; color: #888;">
+                            <i class="fas fa-lightbulb"></i> Use these credentials to test the portal
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Redirect to dashboard
-            window.location.href = 'dashboard.html';
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remember me checkbox functionality
+            const rememberCheckbox = document.getElementById('rememberCheckbox');
+            const rememberMe = document.getElementById('rememberMe');
+            
+            rememberMe.addEventListener('click', function() {
+                rememberCheckbox.classList.toggle('checked');
+            });
+            
+            // Form submission
+            const loginForm = document.getElementById('loginForm');
+            const errorMessage = document.getElementById('errorMessage');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            // Demo credentials
+            const demoCredentials = {
+                memberNumber: 'BW001234',
+                password: 'password123'
+            };
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const memberNumber = document.getElementById('memberNumber').value;
+                const password = document.getElementById('password').value;
+                
+                // Reset error message
+                errorMessage.style.display = 'none';
+                
+                // Show loading state
+                const originalText = loginBtn.innerHTML;
+                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+                loginBtn.disabled = true;
+                
+                // Simulate API call delay
+                setTimeout(() => {
+                    // Simple validation for demo
+                    if (memberNumber === demoCredentials.memberNumber && 
+                        password === demoCredentials.password) {
+                        
+                        // Save remember me preference
+                        if (rememberCheckbox.classList.contains('checked')) {
+                            localStorage.setItem('rememberMe', 'true');
+                            localStorage.setItem('memberNumber', memberNumber);
+                        } else {
+                            localStorage.removeItem('rememberMe');
+                            localStorage.removeItem('memberNumber');
+                        }
+                        
+                        // Redirect to dashboard
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        errorMessage.style.display = 'block';
+                        
+                        // Reset button state
+                        loginBtn.innerHTML = originalText;
+                        loginBtn.disabled = false;
+                    }
+                }, 1500);
+            });
+            
+            // Check for remembered credentials
+            if (localStorage.getItem('rememberMe') === 'true') {
+                const savedMemberNumber = localStorage.getItem('memberNumber');
+                if (savedMemberNumber) {
+                    document.getElementById('memberNumber').value = savedMemberNumber;
+                    rememberCheckbox.classList.add('checked');
+                }
+            }
+            
+            // Auto-fill demo credentials for testing
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('demo') === 'true') {
+                document.getElementById('memberNumber').value = demoCredentials.memberNumber;
+                document.getElementById('password').value = demoCredentials.password;
+            }
+            
+            // Focus on member number field
+            document.getElementById('memberNumber').focus();
         });
     </script>
 </body>
